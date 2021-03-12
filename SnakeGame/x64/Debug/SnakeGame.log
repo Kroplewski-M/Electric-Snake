@@ -1,59 +1,32 @@
-﻿  Game.cpp
-C:\Users\User\Desktop\SnakeGame1\SnakeGame\Game.h(22,7): warning C4215: nonstandard extension used: long float
-  Grid.cpp
-C:\Users\User\Desktop\SnakeGame1\SnakeGame\Grid.cpp(20,13): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+﻿  Snake.cpp
+C:\Users\User\Desktop\SnakeGame\SnakeGame\Snake.cpp(28,47): warning C4244: '-=': conversion from 'T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\User\Desktop\SnakeGame1\SnakeGame\Grid.cpp(20,85): warning C4244: '+=': conversion from 'T' to 'int', possible loss of data
+C:\Users\User\Desktop\SnakeGame\SnakeGame\Snake.cpp(31,55): warning C4244: '+=': conversion from 'T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\User\Desktop\SnakeGame1\SnakeGame\Grid.cpp(22,14): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+C:\Users\User\Desktop\SnakeGame\SnakeGame\Snake.cpp(34,47): warning C4244: '-=': conversion from 'T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\User\Desktop\SnakeGame1\SnakeGame\Grid.cpp(22,86): warning C4244: '+=': conversion from 'T' to 'int', possible loss of data
+C:\Users\User\Desktop\SnakeGame\SnakeGame\Snake.cpp(37,55): warning C4244: '+=': conversion from 'T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-  Main.cpp
-C:\Users\User\Desktop\SnakeGame1\SnakeGame\Game.h(22,7): warning C4215: nonstandard extension used: long float
-  Snake.cpp
-C:\Users\User\Desktop\SnakeGame1\SnakeGame\Snake.cpp(27,47): warning C4244: '-=': conversion from 'T' to 'int', possible loss of data
+C:\Users\User\Desktop\SnakeGame\SnakeGame\Snake.cpp(50,44): warning C4244: 'argument': conversion from 'const int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\User\Desktop\SnakeGame1\SnakeGame\Snake.cpp(30,55): warning C4244: '+=': conversion from 'T' to 'int', possible loss of data
+C:\Users\User\Desktop\SnakeGame\SnakeGame\Snake.cpp(50,39): warning C4244: 'argument': conversion from 'const int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\User\Desktop\SnakeGame1\SnakeGame\Snake.cpp(33,47): warning C4244: '-=': conversion from 'T' to 'int', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\Users\User\Desktop\SnakeGame1\SnakeGame\Snake.cpp(36,55): warning C4244: '+=': conversion from 'T' to 'int', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\Users\User\Desktop\SnakeGame1\SnakeGame\Snake.cpp(46,71): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\Users\User\Desktop\SnakeGame1\SnakeGame\Snake.cpp(46,52): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-  Window.cpp
-  Generating Code...
-  SnakeGame.vcxproj -> C:\Users\User\Desktop\SnakeGame1\x64\Debug\SnakeGame.exe
+  SnakeGame.vcxproj -> C:\Users\User\Desktop\SnakeGame\x64\Debug\SnakeGame.exe

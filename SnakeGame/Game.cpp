@@ -27,8 +27,6 @@ void Game::HandleInput()
 	{
 		snake.ChangeDirection(Direction::Down);
 	}
-
-
 }
 
 void Game::Update()
@@ -36,7 +34,6 @@ void Game::Update()
 	m_window.Update();
 
 	snake.Update(clock.restart().asSeconds());
-
 
 }
 
