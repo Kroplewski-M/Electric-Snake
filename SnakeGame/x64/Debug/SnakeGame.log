@@ -1,10 +1,10 @@
 ﻿  Snake.cpp
-C:\Users\User\Desktop\SnakeGame\SnakeGame\Snake.cpp(73,44): warning C4244: 'argument': conversion from 'const int' to 'T', possible loss of data
+C:\Users\User\Desktop\SnakeGame\SnakeGame\Snake.cpp(77,44): warning C4244: 'argument': conversion from 'const int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\User\Desktop\SnakeGame\SnakeGame\Snake.cpp(73,39): warning C4244: 'argument': conversion from 'const int' to 'T', possible loss of data
+C:\Users\User\Desktop\SnakeGame\SnakeGame\Snake.cpp(77,39): warning C4244: 'argument': conversion from 'const int' to 'T', possible loss of data
           with
           [
               T=float

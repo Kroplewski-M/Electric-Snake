@@ -49,7 +49,7 @@ void Game::Render()
 	{
 		m_window.Draw(i);
 	}
-
+	
 
 	snake.Render(m_window);
 
