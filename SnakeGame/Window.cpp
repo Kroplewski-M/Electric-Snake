@@ -8,6 +8,8 @@ Window::Window()
 Window::Window(const std::string& l_tittle, const sf::Vector2u& l_size)
 {
 	Setup(l_tittle, l_size);
+	m_window.setVerticalSyncEnabled(1);
+
 }
 
 Window::~Window()

@@ -1,14 +1,10 @@
 ﻿  Snake.cpp
-C:\Users\User\Desktop\SnakeGame\SnakeGame\Snake.cpp(31,37): warning C4244: '-=': conversion from 'double' to 'int', possible loss of data
-C:\Users\User\Desktop\SnakeGame\SnakeGame\Snake.cpp(38,37): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
-C:\Users\User\Desktop\SnakeGame\SnakeGame\Snake.cpp(45,37): warning C4244: '-=': conversion from 'double' to 'int', possible loss of data
-C:\Users\User\Desktop\SnakeGame\SnakeGame\Snake.cpp(52,37): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
-C:\Users\User\Desktop\SnakeGame\SnakeGame\Snake.cpp(66,44): warning C4244: 'argument': conversion from 'const int' to 'T', possible loss of data
+C:\Users\User\Desktop\SnakeGame\SnakeGame\Snake.cpp(73,44): warning C4244: 'argument': conversion from 'const int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\User\Desktop\SnakeGame\SnakeGame\Snake.cpp(66,39): warning C4244: 'argument': conversion from 'const int' to 'T', possible loss of data
+C:\Users\User\Desktop\SnakeGame\SnakeGame\Snake.cpp(73,39): warning C4244: 'argument': conversion from 'const int' to 'T', possible loss of data
           with
           [
               T=float

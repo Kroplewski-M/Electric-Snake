@@ -4,7 +4,8 @@
 
 Game::Game()
 	:m_window("Game Window", { 800,600 })
-{}
+{
+}
 
 Game::~Game()
 {}
@@ -34,6 +35,7 @@ void Game::Update()
 	m_window.Update();
 
 	snake.Update(clock.restart().asSeconds());
+
 
 }
 

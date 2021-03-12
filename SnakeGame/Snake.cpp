@@ -6,7 +6,12 @@ Snake::Snake()
 	:rectangle(snakeSegmentSize)
 {
 	rectangle.setFillColor(sf::Color::Red);
+	//rectangle.setOutlineThickness(2);
+	//rectangle.setOutlineColor(sf::Color::White);
+	m_SegmentPos.emplace_back(SnakeSegment{ 160,0 });
+	m_SegmentPos.emplace_back(SnakeSegment{ 140,0 });
 	m_SegmentPos.emplace_back(SnakeSegment{ 120,0 });
+
 }
 
 Snake::~Snake()
@@ -16,7 +21,9 @@ Snake::~Snake()
 
 void Snake::Update(float DT)
 {
-	DT = DT * 3;
+	while (clock.getElapsedTime().asMilliseconds() < 150);
+	clock.restart();
+	
 
 	if (m_SegmentPos[0].x % 20 == 0 && m_SegmentPos[0].y % 20 == 0)
 		m_direction = m_direction_queue;
@@ -28,28 +35,28 @@ void Snake::Update(float DT)
 		std::reverse(m_SegmentPos.begin(), m_SegmentPos.end());
 		m_SegmentPos.push_back(m_SegmentPos[m_SegmentPos.size() - 1]);
 		std::reverse(m_SegmentPos.begin(), m_SegmentPos.end());
-		m_SegmentPos[0].y -= 20 * DT - 0.3;
+		m_SegmentPos[0].y -= 20 ;
 		m_SegmentPos.pop_back();
 		break;
 	case Direction::Down:
 		std::reverse(m_SegmentPos.begin(), m_SegmentPos.end());
 		m_SegmentPos.push_back(m_SegmentPos[m_SegmentPos.size() - 1]);
 		std::reverse(m_SegmentPos.begin(), m_SegmentPos.end());
-		m_SegmentPos[0].y += 20 * DT + 0.7;
+		m_SegmentPos[0].y += 20 ;
 		m_SegmentPos.pop_back();
 		break;
 	case Direction::Left:
 		std::reverse(m_SegmentPos.begin(), m_SegmentPos.end());
 		m_SegmentPos.push_back(m_SegmentPos[m_SegmentPos.size() - 1]);
 		std::reverse(m_SegmentPos.begin(), m_SegmentPos.end());
-		m_SegmentPos[0].x -= 20 * DT - 0.3;
+		m_SegmentPos[0].x -= 20 ;
 		m_SegmentPos.pop_back();
 		break;
 	case Direction::Right:
 		std::reverse(m_SegmentPos.begin(), m_SegmentPos.end());
 		m_SegmentPos.push_back(m_SegmentPos[m_SegmentPos.size() - 1]);
 		std::reverse(m_SegmentPos.begin(), m_SegmentPos.end());
-		m_SegmentPos[0].x += 20 * DT + 0.9;
+		m_SegmentPos[0].x += 20 ;
 		m_SegmentPos.pop_back();
 		break;
 	}

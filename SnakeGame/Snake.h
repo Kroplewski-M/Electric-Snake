@@ -34,6 +34,7 @@ public:
 
 	std::vector<SnakeSegment> GetSegments();
 private:
+	sf::Clock clock;
 	std::vector<SnakeSegment>m_SegmentPos;
 	sf::Vector2f snakeSegmentSize{ 20,20 };
 	sf::RectangleShape rectangle;
