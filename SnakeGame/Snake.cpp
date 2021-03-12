@@ -25,16 +25,32 @@ void Snake::Update(float DT)
 	switch (m_direction)
 	{
 	case Direction::Up:
-		m_SegmentPos[0].y -= snakeSegmentSize.y * DT;
+		std::reverse(m_SegmentPos.begin(), m_SegmentPos.end());
+		m_SegmentPos.push_back(m_SegmentPos[m_SegmentPos.size() - 1]);
+		std::reverse(m_SegmentPos.begin(), m_SegmentPos.end());
+		m_SegmentPos[0].y -= 20 * DT - 0.3;
+		m_SegmentPos.pop_back();
 		break;
 	case Direction::Down:
-		m_SegmentPos[0].y += (1 + (snakeSegmentSize.y * DT));
+		std::reverse(m_SegmentPos.begin(), m_SegmentPos.end());
+		m_SegmentPos.push_back(m_SegmentPos[m_SegmentPos.size() - 1]);
+		std::reverse(m_SegmentPos.begin(), m_SegmentPos.end());
+		m_SegmentPos[0].y += 20 * DT + 0.7;
+		m_SegmentPos.pop_back();
 		break;
 	case Direction::Left:
-		m_SegmentPos[0].x -= snakeSegmentSize.x * DT;
+		std::reverse(m_SegmentPos.begin(), m_SegmentPos.end());
+		m_SegmentPos.push_back(m_SegmentPos[m_SegmentPos.size() - 1]);
+		std::reverse(m_SegmentPos.begin(), m_SegmentPos.end());
+		m_SegmentPos[0].x -= 20 * DT - 0.3;
+		m_SegmentPos.pop_back();
 		break;
 	case Direction::Right:
-		m_SegmentPos[0].x += (1 + (snakeSegmentSize.x * DT));
+		std::reverse(m_SegmentPos.begin(), m_SegmentPos.end());
+		m_SegmentPos.push_back(m_SegmentPos[m_SegmentPos.size() - 1]);
+		std::reverse(m_SegmentPos.begin(), m_SegmentPos.end());
+		m_SegmentPos[0].x += 20 * DT + 0.9;
+		m_SegmentPos.pop_back();
 		break;
 	}
 	Grow();
@@ -62,11 +78,11 @@ void Snake::Grow()
 
 		if (m_direction == Direction::Up)
 		{
-			m_SegmentPos.emplace_back(SnakeSegment{ m_SegmentPos[0].x  ,m_SegmentPos[0].y + 20});
+			m_SegmentPos.emplace_back(SnakeSegment{ m_SegmentPos[0].x  ,m_SegmentPos[0].y + 20 });
 		}
 		if (m_direction == Direction::Down)
 		{
-			m_SegmentPos.emplace_back(SnakeSegment{ m_SegmentPos[0].x,m_SegmentPos[0].y });
+			m_SegmentPos.emplace_back(SnakeSegment{ m_SegmentPos[0].x,m_SegmentPos[0].y - 20});
 		}
 		if (m_direction == Direction::Left)
 		{
@@ -74,7 +90,7 @@ void Snake::Grow()
 		}
 		if (m_direction == Direction::Right)
 		{
-			m_SegmentPos.emplace_back(SnakeSegment{ m_SegmentPos[0].x ,m_SegmentPos[0].y });
+			m_SegmentPos.emplace_back(SnakeSegment{ m_SegmentPos[0].x - 20 ,m_SegmentPos[0].y });
 		}
 	}
 }
