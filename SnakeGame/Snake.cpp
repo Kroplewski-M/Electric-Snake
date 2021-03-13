@@ -1,12 +1,13 @@
 #include "Snake.h"
 #include "Window.h"
+#include <iostream>
 
 Snake::Snake()
-	:rectangle(snakeSegmentSize)
+	:rectangle({snakeSegmentSize.x - 1,snakeSegmentSize.y - 1 })
 {
 	rectangle.setFillColor(sf::Color::Red);
-	rectangle.setOutlineThickness(1);
-	rectangle.setOutlineColor(sf::Color::White);
+	//rectangle.setOutlineThickness(1);
+	//rectangle.setOutlineColor(sf::Color::White);
 	m_SegmentPos.emplace_back(SnakeSegment{ 160,20 });
 	m_SegmentPos.emplace_back(SnakeSegment{ 140,20 });
 	m_SegmentPos.emplace_back(SnakeSegment{ 120,20});
@@ -119,21 +120,23 @@ void Snake::Dead()
 bool Snake::CheckCollision()
 {
 	//SNAKE VS WORLD
-	if (m_SegmentPos[0].x == 600)
+	if (m_SegmentPos[0].x == 600 || m_SegmentPos[0].x == 100)
 	{
 		Dead();
 	}
-	else if (m_SegmentPos[0].x == 100)
+	else if (m_SegmentPos[0].y == 0 || m_SegmentPos[0].y == 600)
 	{
 		Dead();
 	}
-	else if (m_SegmentPos[0].y == 0)
+	//SNAKE VS SNAKE
+	for (int i = 1; i < m_SegmentPos.size(); i++ )
 	{
-		Dead();
-	}
-	else if (m_SegmentPos[0].y == 600)
-	{
-		Dead();
+		if (m_SegmentPos[0].x == m_SegmentPos[i].x && m_SegmentPos[0].y == m_SegmentPos[i].y)
+		{
+			Dead();
+			break;
+		}
+
 	}
 
 	return true;
