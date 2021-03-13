@@ -124,7 +124,7 @@ bool Snake::CheckCollision()
 	{
 		Dead();
 	}
-	else if (m_SegmentPos[0].y == 0 || m_SegmentPos[0].y == 600)
+	else if (m_SegmentPos[0].y == -20 || m_SegmentPos[0].y == 600)
 	{
 		Dead();
 	}
