@@ -16,6 +16,8 @@ public:
 	void Update();
 	void Render();
 	Window* GetWindow();
+	bool AppleIsColliding(Snake& m_snake, const sf::Vector2f& pos_);
+	sf::Vector2f SetAppleLocation();
 
 private:
 	sf::Clock clock;

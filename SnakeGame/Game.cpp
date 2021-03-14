@@ -3,8 +3,9 @@
 
 
 Game::Game()
-	:m_window("Game Window", { 800,600 }), apple(snake)
+	:m_window("Game Window", { 800,600 })
 {
+	apple.SetSpawnLocation(SetAppleLocation());
 }
 
 Game::~Game()
@@ -40,6 +41,7 @@ void Game::HandleInput()
 			snake.ChangeDirection(Direction::Down);
 		}
 	}
+
 }
 
 void Game::Update()
@@ -47,13 +49,13 @@ void Game::Update()
 	m_window.Update();
 
 	snake.Update(clock.restart().asSeconds());
-	apple.Update(snake);
+
 	if (snake.getIsDead() == false)
 	{
 		if (snake.GetSegments().front().x == apple.GetLocation().x && snake.GetSegments().front().y == apple.GetLocation().y)
 		{
-			apple.Destroy();
 			snake.Grow();
+			apple.SetSpawnLocation(SetAppleLocation());
 		}
 	}
 
@@ -69,7 +71,11 @@ void Game::Render()
 	{
 		m_window.Draw(i);
 	}
-	
+	if (apple.GetIsAlive() == false)
+	{
+		apple.SetSpawnLocation(SetAppleLocation());
+	}
+
 	apple.Render(m_window);
 	snake.Render(m_window);
 
@@ -81,3 +87,26 @@ Window* Game::GetWindow()
 {
 	return &m_window;
 }
+
+bool Game::AppleIsColliding(Snake& m_snake, const sf::Vector2f& pos_)
+{
+	for (const SnakeSegment& seg_ : m_snake.GetSegments())
+	{
+		if (sf::Vector2f(seg_.x, seg_.y) == pos_)
+			return true;
+	}
+	return false;
+}
+
+sf::Vector2f Game::SetAppleLocation()
+{
+	float randX, randY;
+	do {
+		randX = 120 + (((rand() % 601) % 20) * 20);
+		randY = (((rand() % 601) % 20) * 20);
+	} while (AppleIsColliding(snake, sf::Vector2f(randX, randY)));
+	apple.SetSpawnLocation({ randX, randY }) ;
+
+	return apple.GetLocation();
+}
+

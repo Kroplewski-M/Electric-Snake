@@ -2,24 +2,10 @@
 #include "Window.h"
 #include "Snake.h"
 
-bool IsColliding(Snake& m_snake, const sf::Vector2f& pos_)
-{
-	for(const SnakeSegment& seg_ : m_snake.GetSegments())
-	{
-		if (sf::Vector2f(seg_.x, seg_.y) == pos_)
-			return true;
-	}
-	return false;
-}
 
-Consumables::Consumables(Snake& snake)
+
+Consumables::Consumables()
 {
-	float randX, randY;
-	do{
-		randX = 120 + (((rand() % 601) % 20) * 20);
-		randY = (((rand() % 601) % 20) * 20);
-	} while (IsColliding(snake, sf::Vector2f(randX, randY)));
-	m_pos = {randX, randY};
 }
 
 Consumables::~Consumables()
@@ -27,21 +13,9 @@ Consumables::~Consumables()
 
 }
 
-void Consumables::Update(Snake& snake)
+void Consumables::Update()
 {
-	// if dead and time delay finished
-	if (!m_isAlive)
-	{
-		float randX, randY;
-	do{
-		randX = 120 + (((rand() % 601) % 20) * 20);
-		randY = (((rand() % 601) % 20) * 20);
-	} while (IsColliding(snake, sf::Vector2f(randX, randY)));
-	
-	m_pos = {  randX, randY  };
-	m_isAlive = true;
-	}
-	//reset time delay using rand
+		
 	
 }
 
@@ -68,9 +42,24 @@ void Consumables::SetIsAlive(bool isAlive)
 
 
 
+bool Consumables::GetIsAlive()
+{
+	return m_isAlive;
+}
+
+void Consumables::ToggleIsDead()
+{
+	m_isAlive = -m_isAlive;
+}
+
 sf::Vector2f Consumables::GetLocation()
 {
 	return m_pos;
 }
 
+sf::Vector2f Consumables::SetSpawnLocation(sf::Vector2f loc)
+{
+	m_pos = loc;
+	return m_pos;
+}
 
