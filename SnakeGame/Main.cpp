@@ -5,6 +5,7 @@
 
 int main()
 {
+	srand((time(0u)));
 	Game game;
 	while (!game.GetWindow()->isDone())
 	{

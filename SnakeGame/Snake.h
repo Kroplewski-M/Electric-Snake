@@ -31,7 +31,9 @@ public:
 	void ChangeDirection(Direction newDirection);
 	void Dead();
 	bool CheckCollision();
+	bool getIsDead();
 	std::vector<SnakeSegment> GetSegments();
+	Direction GetDirection();
 private:
 	bool isDead = false;
 	sf::Clock clock;

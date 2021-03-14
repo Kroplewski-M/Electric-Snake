@@ -2,7 +2,7 @@
 #include "window.h"
 #include <vector>
 #include "Snake.h"
-
+#include "Consumables.h"
 
 class Snake;
 
@@ -22,6 +22,7 @@ private:
 	long float DT;
 	Window m_window;
 	Snake snake;
+	Consumables apple;
 
 };
 

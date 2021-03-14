@@ -3,7 +3,7 @@
 
 
 Game::Game()
-	:m_window("Game Window", { 800,600 })
+	:m_window("Game Window", { 800,600 }), apple(snake)
 {
 }
 
@@ -14,19 +14,31 @@ void Game::HandleInput()
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 	{
-		snake.ChangeDirection(Direction::Right);
+		if (snake.GetDirection() != Direction::Left)
+		{
+			snake.ChangeDirection(Direction::Right);
+		}
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 	{
-		snake.ChangeDirection(Direction::Left);
+		if (snake.GetDirection() != Direction::Right)
+		{
+			snake.ChangeDirection(Direction::Left);
+		}
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 	{
-		snake.ChangeDirection(Direction::Up);
+		if (snake.GetDirection() != Direction::Down)
+		{
+			snake.ChangeDirection(Direction::Up);
+		}
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
 	{
-		snake.ChangeDirection(Direction::Down);
+		if (snake.GetDirection() != Direction::Up)
+		{
+			snake.ChangeDirection(Direction::Down);
+		}
 	}
 }
 
@@ -35,14 +47,22 @@ void Game::Update()
 	m_window.Update();
 
 	snake.Update(clock.restart().asSeconds());
-
+	apple.Update(snake);
+	if (snake.getIsDead() == false)
+	{
+		if (snake.GetSegments().front().x == apple.GetLocation().x && snake.GetSegments().front().y == apple.GetLocation().y)
+		{
+			apple.Destroy();
+			snake.Grow();
+		}
+	}
 
 }
 
 void Game::Render()
 {
 	m_window.BeginDraw();  //CLEAR
-
+	
 	//DRAW GRID
 	Grid snakeGrid(sf::Vector2f(120, 0), sf::Vector2f(600, 600), sf::Vector2f(20, 20));
 	for (auto& i : snakeGrid.GetGrid())
@@ -50,7 +70,7 @@ void Game::Render()
 		m_window.Draw(i);
 	}
 	
-
+	apple.Render(m_window);
 	snake.Render(m_window);
 
 

@@ -24,7 +24,7 @@ void Snake::Update(float DT)
 	if(isDead == false)
 	{
 
-		while (clock.getElapsedTime().asMilliseconds() < 150);
+		while (clock.getElapsedTime().asMilliseconds() < 120);
 		clock.restart();
 
 
@@ -63,7 +63,6 @@ void Snake::Update(float DT)
 			m_SegmentPos.pop_back();
 			break;
 		}
-		Grow();
 		CheckCollision();
 	}
 }
@@ -77,33 +76,35 @@ void Snake::Render(Window& window)
 		rectangle.setPosition(sf::Vector2f(i.x, i.y));
 		window.Draw(rectangle);
 	}
-		
+	
 }
 
 
 
 void Snake::Grow()
 {
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::H))
-	{
 
 		if (m_direction == Direction::Up)
 		{
 			m_SegmentPos.emplace_back(SnakeSegment{ m_SegmentPos[0].x  ,m_SegmentPos[0].y + 20 });
+			return;
 		}
 		if (m_direction == Direction::Down)
 		{
-			m_SegmentPos.emplace_back(SnakeSegment{ m_SegmentPos[0].x,m_SegmentPos[0].y - 20});
+			m_SegmentPos.emplace_back(SnakeSegment{ m_SegmentPos[0].x,m_SegmentPos[0].y - 20 });
+			return;
 		}
 		if (m_direction == Direction::Left)
 		{
 			m_SegmentPos.emplace_back(SnakeSegment{ m_SegmentPos[0].x + 20 ,m_SegmentPos[0].y });
+			return;
 		}
 		if (m_direction == Direction::Right)
 		{
 			m_SegmentPos.emplace_back(SnakeSegment{ m_SegmentPos[0].x - 20 ,m_SegmentPos[0].y });
+			return;
 		}
-	}
+	
 }
 
 void Snake::ChangeDirection(Direction newDirection)
@@ -115,6 +116,7 @@ void Snake::Dead()
 {
 	isDead = true;
 	m_SegmentPos.clear();
+	
 }
 
 bool Snake::CheckCollision()
@@ -142,7 +144,17 @@ bool Snake::CheckCollision()
 	return true;
 }
 
+bool Snake::getIsDead()
+{
+	return isDead;
+}
+
 std::vector<SnakeSegment> Snake::GetSegments()
 {
 	return m_SegmentPos;
+}
+
+Direction Snake::GetDirection()
+{
+	return m_direction;
 }
