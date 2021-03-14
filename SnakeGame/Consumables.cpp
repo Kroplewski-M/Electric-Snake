@@ -23,10 +23,10 @@ void Consumables::Render(Window& window)
 {
 	if (m_isAlive)
 	{
-		sf::CircleShape x(10);
-		x.setFillColor(sf::Color::Green);
-		x.setPosition(m_pos);
-		window.Draw(x);
+		consumable.setRadius(10);
+		consumable.setFillColor(sf::Color::Green);
+		consumable.setPosition(m_pos);
+		window.Draw(consumable);
 	}
 }
 

@@ -1,15 +1,15 @@
 ﻿  Game.cpp
-C:\Users\User\Desktop\SnakeGame\SnakeGame\Game.h(24,7): warning C4215: nonstandard extension used: long float
-C:\Users\User\Desktop\SnakeGame\SnakeGame\Game.cpp(96,32): warning C4244: 'argument': conversion from 'const int' to 'T', possible loss of data
+C:\Users\User\Desktop\SnakeGame\SnakeGame\Game.h(25,7): warning C4215: nonstandard extension used: long float
+C:\Users\User\Desktop\SnakeGame\SnakeGame\Game.cpp(95,32): warning C4244: 'argument': conversion from 'const int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\User\Desktop\SnakeGame\SnakeGame\Game.cpp(96,24): warning C4244: 'argument': conversion from 'const int' to 'T', possible loss of data
+C:\Users\User\Desktop\SnakeGame\SnakeGame\Game.cpp(95,24): warning C4244: 'argument': conversion from 'const int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\User\Desktop\SnakeGame\SnakeGame\Game.cpp(106,15): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\User\Desktop\SnakeGame\SnakeGame\Game.cpp(107,34): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\Desktop\SnakeGame\SnakeGame\Game.cpp(105,15): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\Desktop\SnakeGame\SnakeGame\Game.cpp(106,34): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
   SnakeGame.vcxproj -> C:\Users\User\Desktop\SnakeGame\x64\Debug\SnakeGame.exe

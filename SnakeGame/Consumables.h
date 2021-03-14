@@ -21,6 +21,7 @@ public:
 	sf::Vector2f GetLocation();
 	sf::Vector2f SetSpawnLocation(sf::Vector2f loc);
 private:
+	sf::CircleShape consumable;
 	sf::Vector2f m_pos;
 	bool m_isAlive = true;
 

@@ -3,6 +3,7 @@
 #include <vector>
 #include "Snake.h"
 #include "Consumables.h"
+#include "Apple.h"
 
 class Snake;
 
@@ -16,15 +17,14 @@ public:
 	void Update();
 	void Render();
 	Window* GetWindow();
-	bool AppleIsColliding(Snake& m_snake, const sf::Vector2f& pos_);
-	sf::Vector2f SetAppleLocation();
+	bool ConsumableIsColliding(Snake& m_snake, const sf::Vector2f& pos_);
+	sf::Vector2f SetConsumableLocation();
 
 private:
 	sf::Clock clock;
 	long float DT;
 	Window m_window;
 	Snake snake;
-	Consumables apple;
-
+	Apple apple;
 };
 
