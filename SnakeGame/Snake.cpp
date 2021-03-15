@@ -1,6 +1,6 @@
 #include "Snake.h"
 #include "Window.h"
-#include <iostream>
+
 
 Snake::Snake()
 	:rectangle({snakeSegmentSize.x - 1,snakeSegmentSize.y - 1 })
@@ -115,8 +115,7 @@ void Snake::ChangeDirection(Direction newDirection)
 void Snake::Dead()
 {
 	isDead = true;
-	m_SegmentPos.clear();
-	
+	m_SegmentPos.clear();	
 }
 
 bool Snake::CheckCollision()
@@ -147,6 +146,19 @@ bool Snake::CheckCollision()
 bool Snake::getIsDead()
 {
 	return isDead;
+}
+
+void Snake::Respawn()
+{
+	if (isDead == true)
+	{
+		isDead = false;
+		m_SegmentPos.emplace_back(SnakeSegment{ 160,20 });
+		m_SegmentPos.emplace_back(SnakeSegment{ 140,20 });
+		m_SegmentPos.emplace_back(SnakeSegment{ 120,20 });
+		m_direction = Direction::none;
+		m_direction_queue = Direction::none;
+	}
 }
 
 std::vector<SnakeSegment> Snake::GetSegments()

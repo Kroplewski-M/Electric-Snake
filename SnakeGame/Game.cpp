@@ -49,7 +49,6 @@ void Game::Update()
 	m_window.Update();
 
 	snake.Update(clock.restart().asSeconds());
-
 	if (snake.getIsDead() == false)
 	{
 		if (snake.GetSegments().front().x == apple.GetLocation().x && snake.GetSegments().front().y == apple.GetLocation().y)
@@ -59,6 +58,8 @@ void Game::Update()
 		}
 	}
 
+	apple.Update();
+	snake.Respawn();
 }
 
 void Game::Render()

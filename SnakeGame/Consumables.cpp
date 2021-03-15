@@ -6,6 +6,8 @@
 
 Consumables::Consumables()
 {
+	consumable.setRadius(10);
+	consumable.setFillColor(sf::Color::Green);
 }
 
 Consumables::~Consumables()
@@ -15,6 +17,7 @@ Consumables::~Consumables()
 
 void Consumables::Update()
 {
+		consumable.setPosition(m_pos);
 		
 	
 }
@@ -22,10 +25,7 @@ void Consumables::Update()
 void Consumables::Render(Window& window)
 {
 	if (m_isAlive)
-	{
-		consumable.setRadius(10);
-		consumable.setFillColor(sf::Color::Green);
-		consumable.setPosition(m_pos);
+	{	
 		window.Draw(consumable);
 	}
 }
