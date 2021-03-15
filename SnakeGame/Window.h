@@ -20,6 +20,9 @@ private:
 	void Destory();
 	void Create();
 
+
+
+	sf::Image icon;
 	sf::RenderWindow m_window;
 	sf::Vector2u m_windowSize;
 	std::string m_windowTitle;

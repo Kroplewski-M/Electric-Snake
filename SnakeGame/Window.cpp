@@ -8,8 +8,9 @@ Window::Window()
 Window::Window(const std::string& l_tittle, const sf::Vector2u& l_size)
 {
 	Setup(l_tittle, l_size);
+	icon.loadFromFile("snakeicon.png");
+	m_window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
 	m_window.setVerticalSyncEnabled(1);
-
 }
 
 Window::~Window()
@@ -59,6 +60,7 @@ void Window::Setup(const std::string& l_tittle, const sf::Vector2u& l_size)
 	m_windowTitle = l_tittle;
 	m_windowSize = l_size;
 	m_isDone = false;
+	
 	Create();
 }
 

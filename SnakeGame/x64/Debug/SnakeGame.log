@@ -1,4 +1,23 @@
-﻿  Snake.cpp
+﻿  Consumables.cpp
+C:\Users\User\Desktop\SnakeGame\SnakeGame\Consumables.cpp(52,24): warning C4804: '-': unsafe use of type 'bool' in operation
+  Game.cpp
+C:\Users\User\Desktop\SnakeGame\SnakeGame\Game.h(28,7): warning C4215: nonstandard extension used: long float
+C:\Users\User\Desktop\SnakeGame\SnakeGame\Game.cpp(57,32): warning C4244: 'argument': conversion from 'const int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\User\Desktop\SnakeGame\SnakeGame\Game.cpp(57,24): warning C4244: 'argument': conversion from 'const int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\User\Desktop\SnakeGame\SnakeGame\Game.cpp(67,15): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\Desktop\SnakeGame\SnakeGame\Game.cpp(68,34): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  Main.cpp
+C:\Users\User\Desktop\SnakeGame\SnakeGame\Game.h(28,7): warning C4215: nonstandard extension used: long float
+C:\Users\User\Desktop\SnakeGame\SnakeGame\Main.cpp(8,13): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Snake.cpp
 C:\Users\User\Desktop\SnakeGame\SnakeGame\Snake.cpp(76,44): warning C4244: 'argument': conversion from 'const int' to 'T', possible loss of data
           with
           [
@@ -9,4 +28,6 @@ C:\Users\User\Desktop\SnakeGame\SnakeGame\Snake.cpp(76,39): warning C4244: 'argu
           [
               T=float
           ]
+  Window.cpp
+  Generating Code...
   SnakeGame.vcxproj -> C:\Users\User\Desktop\SnakeGame\x64\Debug\SnakeGame.exe
