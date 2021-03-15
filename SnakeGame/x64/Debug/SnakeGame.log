@@ -1,1 +1,16 @@
+<<<<<<< HEAD
 ﻿  SnakeGame.vcxproj -> C:\Users\User\Desktop\SnakeGame\x64\Debug\SnakeGame.exe
+=======
+﻿  Snake.cpp
+C:\Users\User\Desktop\SnakeGame\SnakeGame\Snake.cpp(76,44): warning C4244: 'argument': conversion from 'const int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\User\Desktop\SnakeGame\SnakeGame\Snake.cpp(76,39): warning C4244: 'argument': conversion from 'const int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+  SnakeGame.vcxproj -> C:\Users\User\Desktop\SnakeGame\x64\Debug\SnakeGame.exe
+>>>>>>> snake

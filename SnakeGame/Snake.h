@@ -32,6 +32,7 @@ public:
 	void Dead();
 	bool CheckCollision();
 	bool getIsDead();
+	void Respawn();
 	std::vector<SnakeSegment> GetSegments();
 	Direction GetDirection();
 private:
