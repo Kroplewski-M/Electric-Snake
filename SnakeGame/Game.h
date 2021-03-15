@@ -4,7 +4,7 @@
 #include "Snake.h"
 #include "Consumables.h"
 #include "Apple.h"
-
+#include "texture.h"
 class Snake;
 
 class Game
@@ -24,10 +24,14 @@ public:
 	void MoveSnake();
 
 private:
+	
+	sf::Font ScoreFont;
+	sf::Text ScoreText;
 	sf::Clock clock;
 	long float DT;
 	Window m_window;
 	Snake snake;
 	Apple apple;
+	texture GameBackground;
 };
 

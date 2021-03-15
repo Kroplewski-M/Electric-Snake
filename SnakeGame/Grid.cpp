@@ -4,7 +4,7 @@ Grid::Grid(sf::Vector2f TopLeftPoint, sf::Vector2f BottomRightPoint, sf::Vector2
 	:TopLeftGridPoint(TopLeftPoint), BottomRightGridPoint(BottomRightPoint), GridSegmentSize(GridSegmentsize)
 {
 	GridSegment.setSize(GridSegmentSize);
-	GridSegment.setFillColor(sf::Color::Transparent);
+	GridSegment.setFillColor(sf::Color(0,0,0,200));
 	GridSegment.setOutlineThickness(1);
 	GridSegment.setOutlineColor(sf::Color(255, 255, 255, 50));
 	SetGrid();

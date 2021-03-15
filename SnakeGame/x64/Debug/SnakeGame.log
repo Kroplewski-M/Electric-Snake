@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 ﻿  SnakeGame.vcxproj -> C:\Users\User\Desktop\SnakeGame\x64\Debug\SnakeGame.exe
 =======
 ﻿  Snake.cpp
@@ -25,6 +26,9 @@ C:\Users\User\Desktop\SnakeGame\SnakeGame\Game.h(28,7): warning C4215: nonstanda
 C:\Users\User\Desktop\SnakeGame\SnakeGame\Main.cpp(8,13): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
   Snake.cpp
 >>>>>>> snake
+=======
+﻿  Snake.cpp
+>>>>>>> snake
 C:\Users\User\Desktop\SnakeGame\SnakeGame\Snake.cpp(76,44): warning C4244: 'argument': conversion from 'const int' to 'T', possible loss of data
           with
           [
@@ -35,7 +39,5 @@ C:\Users\User\Desktop\SnakeGame\SnakeGame\Snake.cpp(76,39): warning C4244: 'argu
           [
               T=float
           ]
-  Window.cpp
-  Generating Code...
   SnakeGame.vcxproj -> C:\Users\User\Desktop\SnakeGame\x64\Debug\SnakeGame.exe
 >>>>>>> snake

@@ -1,11 +1,9 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
-
-
 class Window;
-class Grid;
-class Snake;
+
+
 
 class Consumables
 {

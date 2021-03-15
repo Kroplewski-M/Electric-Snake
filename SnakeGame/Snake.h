@@ -33,9 +33,11 @@ public:
 	bool CheckCollision();
 	bool getIsDead();
 	void Respawn();
+	int GetScore();
 	std::vector<SnakeSegment> GetSegments();
 	Direction GetDirection();
 private:
+	int score = 0;
 	bool isDead = false;
 	sf::Clock clock;
 	std::vector<SnakeSegment>m_SegmentPos;
