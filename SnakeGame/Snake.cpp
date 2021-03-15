@@ -83,6 +83,7 @@ void Snake::Render(Window& window)
 
 void Snake::Grow()
 {
+	score += 10;
 
 		if (m_direction == Direction::Up)
 		{
@@ -115,6 +116,7 @@ void Snake::ChangeDirection(Direction newDirection)
 void Snake::Dead()
 {
 	isDead = true;
+	score = 0;
 	m_SegmentPos.clear();	
 	Respawn();
 }
@@ -160,6 +162,11 @@ void Snake::Respawn()
 		m_direction = Direction::none;
 		m_direction_queue = Direction::none;
 	}
+}
+
+int Snake::GetScore()
+{
+	return score;
 }
 
 std::vector<SnakeSegment> Snake::GetSegments()

@@ -3,10 +3,15 @@
 
 
 Game::Game()
-	:m_window("Game Window", { 800,600 })
+	:m_window("Game Window", { 800,600 }),GameBackground(800,600,"Snake Background.png")
 {
 	apple.SetSpawnLocation(SetConsumableLocation());
-	
+	if (!ScoreFont.loadFromFile("SnakeFont.otf"))
+	{
+		printf("failed to load snake font");
+	}
+	ScoreText.setFont(ScoreFont);
+	ScoreText.setPosition(sf::Vector2f(600, 10));
 }
 
 Game::~Game()
@@ -27,13 +32,14 @@ void Game::Update()
 	SnakeEats();
 
 	apple.Update();
-
+	
 }
 
 void Game::Render()
 {
 	m_window.BeginDraw();  //CLEAR
 	
+	GameBackground.Render(m_window);
 	//DRAW GRID
 	DrawGrid();
 
@@ -41,7 +47,8 @@ void Game::Render()
 	apple.Render(m_window);
 	snake.Render(m_window);
 
-
+	ScoreText.setString("Score: " + std::to_string(snake.GetScore()));
+	m_window.Draw(ScoreText);
 	m_window.EndDraw();
 }
 
