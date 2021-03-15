@@ -25,7 +25,7 @@ class Snake
 public:
 	Snake();
 	~Snake();
-	void Update(float DT);
+	void Update();
 	void Render(Window& window);
 	void Grow();
 	void ChangeDirection(Direction newDirection);

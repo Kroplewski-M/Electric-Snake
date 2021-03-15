@@ -19,7 +19,7 @@ Snake::~Snake()
 
 }
 
-void Snake::Update(float DT)
+void Snake::Update()
 {
 	if(isDead == false)
 	{
@@ -116,6 +116,7 @@ void Snake::Dead()
 {
 	isDead = true;
 	m_SegmentPos.clear();	
+	Respawn();
 }
 
 bool Snake::CheckCollision()

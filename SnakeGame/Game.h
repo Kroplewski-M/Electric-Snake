@@ -19,6 +19,9 @@ public:
 	Window* GetWindow();
 	bool ConsumableIsColliding(Snake& m_snake, const sf::Vector2f& pos_);
 	sf::Vector2f SetConsumableLocation();
+	void SnakeEats();
+	void DrawGrid();
+	void MoveSnake();
 
 private:
 	sf::Clock clock;
