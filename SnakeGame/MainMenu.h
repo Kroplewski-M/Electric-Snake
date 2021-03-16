@@ -12,11 +12,10 @@ public:
 	~MainMenu();
 	void Update(Window* window);
 	void Render(Window* window);
-	sf::RectangleShape GetButton(int i);
+	sf::RectangleShape GetStartButton();
 private:
-	const static int numberOfButtons = 2;
 	sf::Font font;
-	sf::RectangleShape button;
-	std::vector<sf::RectangleShape>buttons;
+	sf::RectangleShape StartButton;
+
 };
 
