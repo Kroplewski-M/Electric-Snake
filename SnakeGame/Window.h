@@ -15,6 +15,7 @@ public:
 	bool isDone();
 	sf::Vector2u getWindowSize();
 	void Draw(sf::Drawable& l_drawable);
+	void SetIsDone(bool done);
 private:
 	void Setup(const std::string& l_tittle, const sf::Vector2u& l_size);
 	void Destory();

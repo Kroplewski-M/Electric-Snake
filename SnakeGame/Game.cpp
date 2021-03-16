@@ -3,7 +3,7 @@
 
 
 Game::Game()
-	:m_window("Game Window", { 800,600 }),GameBackground(800,600,"Snake Background.png")
+	:m_window("Electric Snake", { 800,600 }),GameBackground(800,600,"Snake Background.png")
 {
 	apple.SetSpawnLocation(SetConsumableLocation());
 	if (!ScoreFont.loadFromFile("SnakeFont.otf"))
@@ -38,7 +38,7 @@ void Game::Update()
 void Game::Render()
 {
 	m_window.BeginDraw();  //CLEAR
-	
+
 	GameBackground.Render(m_window);
 	//DRAW GRID
 	DrawGrid();

@@ -5,6 +5,8 @@
 #include "Consumables.h"
 #include "Apple.h"
 #include "texture.h"
+#include "MainMenu.h"
+
 class Snake;
 
 class Game
@@ -24,7 +26,7 @@ public:
 	void MoveSnake();
 
 private:
-	
+	MainMenu menu;
 	sf::Font ScoreFont;
 	sf::Text ScoreText;
 	sf::Clock clock;
