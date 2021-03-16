@@ -19,7 +19,7 @@ void Scenemanager::Update()
 		{
 		case GameStates::MainMenu:
 			
-				menu.Update(game.GetWindow());
+				menu.Update(&game,game.GetWindow());
 				menu.Render(game.GetWindow());
 				ChangeScene();
 			break;
@@ -32,6 +32,8 @@ void Scenemanager::Update()
 			break;
 		case GameStates::GameOver:
 			break;
+		case GameStates::QuitGame:
+			game.GetWindow()->SetIsDone(true);
 		default:
 			break;
 		}
@@ -42,19 +44,32 @@ void Scenemanager::ChangeScene()
 {
 	if (myStates == GameStates::MainMenu)
 	{
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num1))
+		if (game.GetWindow()->getMouseLocation().x > menu.GetStartButton().getPosition().x 
+			&& game.GetWindow()->getMouseLocation().x < menu.GetStartButton().getPosition().x + menu.GetStartButton().getSize().x &&
+			game.GetWindow()->getMouseLocation().y > menu.GetStartButton().getPosition().y 
+			&& game.GetWindow()->getMouseLocation().y < menu.GetStartButton().getPosition().y + menu.GetStartButton().getSize().y)
 		{
-			game.GetWindow()->SetIsDone(true);
+			if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+			{
+				myStates = GameStates::Game;
+			}
+
 		}
 	}
 	if (myStates == GameStates::MainMenu)
 	{
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter))
+		if (game.GetWindow()->getMouseLocation().x > menu.GetQuitButton().getPosition().x && game.GetWindow()->getMouseLocation().x < menu.GetQuitButton().getPosition().x + menu.GetQuitButton().getSize().x &&
+			game.GetWindow()->getMouseLocation().y > menu.GetQuitButton().getPosition().y && game.GetWindow()->getMouseLocation().y < menu.GetQuitButton().getPosition().y + menu.GetQuitButton().getSize().y)
 		{
+			if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+			{
+				myStates = GameStates::QuitGame;
+			}
 
-			myStates = GameStates::Game;
 		}
 	}
+
+
 	if (myStates == GameStates::Game)
 	{
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))

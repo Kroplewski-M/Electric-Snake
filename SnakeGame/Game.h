@@ -26,7 +26,7 @@ public:
 	void MoveSnake();
 
 private:
-	MainMenu menu;
+
 	sf::Font ScoreFont;
 	sf::Text ScoreText;
 	sf::Clock clock;
