@@ -74,6 +74,11 @@ void Window::Create()
 	m_window.create({ m_windowSize.x,m_windowSize.y,32 }, m_windowTitle, sf::Style::Default);
 }
 
+sf::Vector2f Window::getMouseLocation()
+{
+	return sf::Vector2f(sf::Mouse::getPosition(m_window).x, sf::Mouse::getPosition(m_window).y);
+}
+
 void Window::Destory()
 {
 	m_window.close();

@@ -1,21 +1,24 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "Window.h"
+#include "Game.h";
 
-
-
+class Game;
 
 class MainMenu
 {	
 public:
 	MainMenu();
 	~MainMenu();
-	void Update(Window* window);
+	void Update(Game* game, Window* window);
 	void Render(Window* window);
 	sf::RectangleShape GetStartButton();
+	sf::RectangleShape GetQuitButton();
+
 private:
 	sf::Font font;
 	sf::RectangleShape StartButton;
+	sf::RectangleShape QuitButton;
 
 };
 

@@ -6,7 +6,8 @@ enum class GameStates
 {
 	MainMenu,
 	Game,
-	GameOver
+	GameOver,
+	QuitGame
 };
 
 class Scenemanager
