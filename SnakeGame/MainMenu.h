@@ -10,8 +10,9 @@ class MainMenu
 public:
 	MainMenu();
 	~MainMenu();
-	void Update();
-	void Render(Window& window);
+	void Update(Window* window);
+	void Render(Window* window);
+	sf::RectangleShape GetButton(int i);
 private:
 	const static int numberOfButtons = 2;
 	sf::Font font;

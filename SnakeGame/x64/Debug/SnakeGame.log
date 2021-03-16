@@ -1,12 +1,15 @@
-﻿  Snake.cpp
-C:\Users\User\Desktop\SnakeGame\SnakeGame\Snake.cpp(76,44): warning C4244: 'argument': conversion from 'const int' to 'T', possible loss of data
+﻿  Game.cpp
+C:\Users\User\Desktop\SnakeGame\SnakeGame\Game.h(33,7): warning C4215: nonstandard extension used: long float
+C:\Users\User\Desktop\SnakeGame\SnakeGame\Game.cpp(64,32): warning C4244: 'argument': conversion from 'const int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\User\Desktop\SnakeGame\SnakeGame\Snake.cpp(76,39): warning C4244: 'argument': conversion from 'const int' to 'T', possible loss of data
+C:\Users\User\Desktop\SnakeGame\SnakeGame\Game.cpp(64,24): warning C4244: 'argument': conversion from 'const int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-  SnakeGame.vcxproj -> C:\Users\User\Desktop\SnakeGame\x64\Debug\SnakeGame.exe
+C:\Users\User\Desktop\SnakeGame\SnakeGame\Game.cpp(74,15): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\Desktop\SnakeGame\SnakeGame\Game.cpp(75,34): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+LINK : fatal error LNK1168: cannot open C:\Users\User\Desktop\SnakeGame\x64\Debug\SnakeGame.exe for writing
