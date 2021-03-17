@@ -41,6 +41,8 @@ MainMenu::MainMenu()
 	Quit.setColor(sf::Color::White);
 	Quit.setCharacterSize(35);
 	Quit.setString("Quit");
+
+	
 }
 
 MainMenu::~MainMenu()
@@ -101,4 +103,6 @@ sf::RectangleShape MainMenu::GetQuitButton()
 {
 	return QuitButton;
 }
+
+
 

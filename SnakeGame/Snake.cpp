@@ -3,7 +3,7 @@
 
 
 Snake::Snake()
-	:rectangle({snakeSegmentSize.x - 1,snakeSegmentSize.y - 1 })
+	:rectangle({snakeSegmentSize.x - 1,snakeSegmentSize.y - 1 }),GameOver("GameOver.wav")
 {
 	rectangle.setFillColor(sf::Color::Red);
 	//rectangle.setOutlineThickness(1);
@@ -115,6 +115,7 @@ void Snake::ChangeDirection(Direction newDirection)
 
 void Snake::Dead()
 {
+	GameOver.PlaySound();
 	isDead = true;
 	score = 0;
 	m_SegmentPos.clear();	

@@ -1,9 +1,9 @@
 #include "Scenemanager.h"
 
 Scenemanager::Scenemanager()
-	:game(), menu()
+	:game(), menu(),MainMenuMusic("MainMenuMusic.wav")
 {
-
+	MainMenuMusic.PlaySound();
 }
 
 Scenemanager::~Scenemanager()
@@ -18,17 +18,16 @@ void Scenemanager::Update()
 		switch (myStates)
 		{
 		case GameStates::MainMenu:
-			
-				menu.Update(&game,game.GetWindow());
-				menu.Render(game.GetWindow());
-				ChangeScene();
+			menu.Update(&game,game.GetWindow());
+			menu.Render(game.GetWindow());
+			ChangeScene();
 			break;
 		case GameStates::Game:
-				//GAME LOOP
-				game.HandleInput();
-				game.Update();
-				game.Render();
-				ChangeScene();
+			MainMenuMusic.SetVolume(5);
+			game.HandleInput();
+			game.Update();
+			game.Render();
+			ChangeScene();
 			break;
 		case GameStates::GameOver:
 			break;
@@ -42,6 +41,8 @@ void Scenemanager::Update()
 
 void Scenemanager::ChangeScene()
 {
+
+
 	if (myStates == GameStates::MainMenu)
 	{
 		if (game.GetWindow()->getMouseLocation().x > menu.GetStartButton().getPosition().x 
@@ -68,6 +69,7 @@ void Scenemanager::ChangeScene()
 
 		}
 	}
+
 
 
 	if (myStates == GameStates::Game)

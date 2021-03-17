@@ -11,8 +11,6 @@ int	main()
 	while (!myScenes.GetGame()->GetWindow()->isDone())
 	{
 		myScenes.Update();
-		//myScenes.ChangeScene();
-
 	}
 
 

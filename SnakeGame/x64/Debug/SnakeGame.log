@@ -33,18 +33,24 @@ C:\Users\User\Desktop\SnakeGame\SnakeGame\Main.cpp(8,13): warning C4244: 'argume
 C:\Users\User\Desktop\SnakeGame\SnakeGame\Snake.cpp(76,44): warning C4244: 'argument': conversion from 'const int' to 'T', possible loss of data
 =======
 ﻿  Game.cpp
+<<<<<<< HEAD
 C:\Users\User\Desktop\SnakeGame\SnakeGame\Game.h(33,7): warning C4215: nonstandard extension used: long float
 C:\Users\User\Desktop\SnakeGame\SnakeGame\Game.cpp(64,32): warning C4244: 'argument': conversion from 'const int' to 'T', possible loss of data
+>>>>>>> snake
+=======
+C:\Users\User\Desktop\SnakeGame\SnakeGame\MainMenu.h(4,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\User\Desktop\SnakeGame\SnakeGame\Game.cpp(76,32): warning C4244: 'argument': conversion from 'const int' to 'T', possible loss of data
 >>>>>>> snake
           with
           [
               T=float
           ]
-C:\Users\User\Desktop\SnakeGame\SnakeGame\Game.cpp(64,24): warning C4244: 'argument': conversion from 'const int' to 'T', possible loss of data
+C:\Users\User\Desktop\SnakeGame\SnakeGame\Game.cpp(76,24): warning C4244: 'argument': conversion from 'const int' to 'T', possible loss of data
           with
           [
               T=float
           ]
+<<<<<<< HEAD
 <<<<<<< HEAD
   SnakeGame.vcxproj -> C:\Users\User\Desktop\SnakeGame\x64\Debug\SnakeGame.exe
 >>>>>>> snake
@@ -52,4 +58,23 @@ C:\Users\User\Desktop\SnakeGame\SnakeGame\Game.cpp(64,24): warning C4244: 'argum
 C:\Users\User\Desktop\SnakeGame\SnakeGame\Game.cpp(74,15): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
 C:\Users\User\Desktop\SnakeGame\SnakeGame\Game.cpp(75,34): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
 LINK : fatal error LNK1168: cannot open C:\Users\User\Desktop\SnakeGame\x64\Debug\SnakeGame.exe for writing
+>>>>>>> snake
+=======
+C:\Users\User\Desktop\SnakeGame\SnakeGame\Game.cpp(86,15): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\Desktop\SnakeGame\SnakeGame\Game.cpp(87,34): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  Main.cpp
+C:\Users\User\Desktop\SnakeGame\SnakeGame\MainMenu.h(4,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\User\Desktop\SnakeGame\SnakeGame\Scenemanager.h(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\User\Desktop\SnakeGame\SnakeGame\Main.cpp(7,13): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  MainMenu.cpp
+C:\Users\User\Desktop\SnakeGame\SnakeGame\MainMenu.h(4,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\User\Desktop\SnakeGame\SnakeGame\MainMenu.cpp(10,55): warning C4390: ';': empty controlled statement found; is this the intent?
+C:\Users\User\Desktop\SnakeGame\SnakeGame\MainMenu.cpp(28,7): warning C4996: 'sf::Text::setColor': was declared deprecated
+C:\Users\User\Desktop\SnakeGame\SnakeGame\MainMenu.cpp(34,7): warning C4996: 'sf::Text::setColor': was declared deprecated
+C:\Users\User\Desktop\SnakeGame\SnakeGame\MainMenu.cpp(41,6): warning C4996: 'sf::Text::setColor': was declared deprecated
+  Scenemanager.cpp
+C:\Users\User\Desktop\SnakeGame\SnakeGame\MainMenu.h(4,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\User\Desktop\SnakeGame\SnakeGame\Scenemanager.h(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  Generating Code...
+  SnakeGame.vcxproj -> C:\Users\User\Desktop\SnakeGame\x64\Debug\SnakeGame.exe
 >>>>>>> snake
