@@ -1,6 +1,7 @@
 #pragma once
 #include "Game.h"
 #include "MainMenu.h";
+#include "Music.h"
 
 enum class GameStates
 {
@@ -23,6 +24,7 @@ private:
 	GameStates myStates = GameStates::MainMenu;
 	Game game;
 	MainMenu menu;
+	Music MainMenuMusic;
 	
 };
 

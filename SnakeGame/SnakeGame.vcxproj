@@ -24,8 +24,10 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="Grid.h" />
     <ClInclude Include="MainMenu.h" />
+    <ClInclude Include="Music.h" />
     <ClInclude Include="Scenemanager.h" />
     <ClInclude Include="Snake.h" />
+    <ClInclude Include="Sound.h" />
     <ClInclude Include="texture.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
@@ -36,8 +38,10 @@
     <ClCompile Include="Grid.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MainMenu.cpp" />
+    <ClCompile Include="Music.cpp" />
     <ClCompile Include="Scenemanager.cpp" />
     <ClCompile Include="Snake.cpp" />
+    <ClCompile Include="Sound.cpp" />
     <ClCompile Include="texture.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>

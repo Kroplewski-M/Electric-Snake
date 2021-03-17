@@ -7,6 +7,7 @@
 #include "texture.h"
 #include "MainMenu.h"
 
+
 class Snake;
 
 class Game
@@ -37,5 +38,6 @@ private:
 	Snake snake;
 	Apple apple;
 	texture GameBackground;
+	Sound SnakeEatSound;
 };
 

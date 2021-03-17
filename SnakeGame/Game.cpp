@@ -3,7 +3,7 @@
 
 
 Game::Game()
-	:m_window("Electric Snake", { 800,600 }),GameBackground(800,600,"Snake Background.png")
+	:m_window("Electric Snake", { 800,600 }), GameBackground(800, 600, "Snake Background.png"), SnakeEatSound("SnakeEats.wav")
 {
 	apple.SetSpawnLocation(SetConsumableLocation());
 	if (!ScoreFont.loadFromFile("SnakeFont.otf"))
@@ -41,6 +41,7 @@ void Game::Update()
 	SnakeEats();
 
 	apple.Update();
+
 	
 }
 
@@ -98,6 +99,7 @@ void Game::SnakeEats()
 	{
 		if (snake.GetSegments().front().x == apple.GetLocation().x && snake.GetSegments().front().y == apple.GetLocation().y)
 		{
+			SnakeEatSound.PlaySound();
 			snake.Grow();
 			apple.SetSpawnLocation(SetConsumableLocation());
 		}

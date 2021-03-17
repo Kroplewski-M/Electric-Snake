@@ -1,6 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-
+#include "Sound.h"
 
 class Window;
 
@@ -48,6 +48,7 @@ private:
 	sf::RectangleShape rectangle;
 	Direction m_direction{ Direction::Right };
 	Direction m_direction_queue{ Direction::none };
+	Sound GameOver;
 };
 
 

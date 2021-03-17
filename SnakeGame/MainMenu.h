@@ -15,6 +15,7 @@ public:
 	sf::RectangleShape GetStartButton();
 	sf::RectangleShape GetQuitButton();
 
+
 private:
 	sf::Font MainMenuFont;
 	sf::RectangleShape StartButton;

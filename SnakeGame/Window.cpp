@@ -71,7 +71,7 @@ void Window::Setup(const std::string& l_tittle, const sf::Vector2u& l_size)
 
 void Window::Create()
 {
-	m_window.create({ m_windowSize.x,m_windowSize.y,32 }, m_windowTitle, sf::Style::Default);
+	m_window.create({ m_windowSize.x,m_windowSize.y,32 }, m_windowTitle, sf::Style::Close);
 }
 
 sf::Vector2f Window::getMouseLocation()
