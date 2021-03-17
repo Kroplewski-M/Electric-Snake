@@ -16,9 +16,14 @@ public:
 	sf::RectangleShape GetQuitButton();
 
 private:
-	sf::Font font;
+	sf::Font MainMenuFont;
 	sf::RectangleShape StartButton;
 	sf::RectangleShape QuitButton;
+	sf::RectangleShape Backgound;
+	sf::Texture BackgoundText;
+	sf::Text Title;
+	sf::Text Start;
+	sf::Text Quit;
 
 };
 

@@ -24,13 +24,15 @@ public:
 	void SnakeEats();
 	void DrawGrid();
 	void MoveSnake();
-
+	void CheckHighScore(int x);
 private:
 
 	sf::Font ScoreFont;
 	sf::Text ScoreText;
+	sf::Text HighScoreText;
+	sf::Text Tips;
+
 	sf::Clock clock;
-	long float DT;
 	Window m_window;
 	Snake snake;
 	Apple apple;

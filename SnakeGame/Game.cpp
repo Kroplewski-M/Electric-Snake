@@ -11,7 +11,16 @@ Game::Game()
 		printf("failed to load snake font");
 	}
 	ScoreText.setFont(ScoreFont);
-	ScoreText.setPosition(sf::Vector2f(600, 10));
+	ScoreText.setPosition(sf::Vector2f(2, 10));
+
+	HighScoreText.setFont(ScoreFont);
+	HighScoreText.setCharacterSize(25);
+	HighScoreText.setPosition({ 2,70 });
+
+	Tips.setFont(ScoreFont);
+	Tips.setCharacterSize(25);
+	Tips.setPosition(600, 10);
+	Tips.setString("Tips: \n\n -Arrows: Move snake \n\n -Eat Apple to grow \n\n -Eat battery to \n be electrified ");
 }
 
 Game::~Game()
@@ -38,7 +47,6 @@ void Game::Update()
 void Game::Render()
 {
 	m_window.BeginDraw();  //CLEAR
-
 	GameBackground.Render(m_window);
 	//DRAW GRID
 	DrawGrid();
@@ -47,8 +55,12 @@ void Game::Render()
 	apple.Render(m_window);
 	snake.Render(m_window);
 
+	HighScoreText.setString("HighScore: \n" + std::to_string(snake.GetHighScore()));
 	ScoreText.setString("Score: " + std::to_string(snake.GetScore()));
+	CheckHighScore(snake.GetScore());
+	m_window.Draw(HighScoreText);
 	m_window.Draw(ScoreText);
+	m_window.Draw(Tips);
 	m_window.EndDraw();
 }
 
@@ -131,6 +143,14 @@ void Game::MoveSnake()
 		{
 			snake.ChangeDirection(Direction::Down);
 		}
+	}
+}
+
+void Game::CheckHighScore(int x)
+{
+	if (snake.GetScore() > snake.GetHighScore())
+	{
+		snake.SetHighScore(snake.GetScore());
 	}
 }
 

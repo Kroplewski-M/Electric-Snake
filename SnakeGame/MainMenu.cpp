@@ -3,9 +3,12 @@
 
 MainMenu::MainMenu()
 {
-	if (!font.loadFromFile("SnakeFont.otf"))
+	if (!MainMenuFont.loadFromFile("MainMenuFont.otf"))
 	{
-		std::cout << "font not loaded";
+	}
+
+	if (!BackgoundText.loadFromFile("SnakeMainMenu.png"));
+	{
 	}
 	StartButton.setSize({100,50});
 	StartButton.setPosition({ 350,200 });
@@ -15,6 +18,29 @@ MainMenu::MainMenu()
 	QuitButton.setPosition({ 350,300 });
 	QuitButton.setFillColor(sf::Color::Red);
 	
+
+	Backgound.setSize({ 800,600 });
+	Backgound.setPosition({ 0,0 });
+	Backgound.setTexture(&BackgoundText);
+
+	Title.setFont(MainMenuFont);
+	Title.setPosition({ 160, 100 });
+	Title.setColor(sf::Color({255, 140, 0 , 255}));
+	Title.setCharacterSize(60);
+	Title.setString("ELECTRIC SNAKE");
+
+	Start.setFont(MainMenuFont);
+	Start.setPosition(StartButton.getPosition());
+	Start.setColor(sf::Color::White);
+	Start.setCharacterSize(35);
+	Start.setString("Start");
+
+
+	Quit.setFont(MainMenuFont);
+	Quit.setPosition(sf::Vector2f(QuitButton.getPosition().x + 12, QuitButton.getPosition().y));
+	Quit.setColor(sf::Color::White);
+	Quit.setCharacterSize(35);
+	Quit.setString("Quit");
 }
 
 MainMenu::~MainMenu()
@@ -55,10 +81,13 @@ void MainMenu::Update(Game* game, Window* window)
 void MainMenu::Render(Window* window)
 {
 	window->BeginDraw();
-
-	
+	window->Draw(Backgound);
+	window->Draw(Title);
 	window->Draw(QuitButton);
 	window->Draw(StartButton);
+	window->Draw(Start);
+	window->Draw(Quit);
+
 	window->EndDraw();
 
 }

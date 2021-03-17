@@ -34,10 +34,13 @@ public:
 	bool getIsDead();
 	void Respawn();
 	int GetScore();
+	int GetHighScore();
+	void SetHighScore(int x);
 	std::vector<SnakeSegment> GetSegments();
 	Direction GetDirection();
 private:
 	int score = 0;
+	int highScore = 0;
 	bool isDead = false;
 	sf::Clock clock;
 	std::vector<SnakeSegment>m_SegmentPos;
