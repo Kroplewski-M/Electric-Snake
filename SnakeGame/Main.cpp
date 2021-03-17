@@ -2,7 +2,7 @@
 #include "Game.h"
 #include "Scenemanager.h"
 
-int main()
+int	main()
 {
 	srand((time(0u)));
 	
@@ -17,17 +17,7 @@ int main()
 
 
 
-	//Game game;
 
-
-	//while (!game.GetWindow()->isDone())
-	//{
-	//	//GAME LOOP
-	//	game.HandleInput();
-	//	game.Update();
-	//	game.Render();
-
-	//}
 
 	return 0;
 }

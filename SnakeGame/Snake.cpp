@@ -169,6 +169,16 @@ int Snake::GetScore()
 	return score;
 }
 
+int Snake::GetHighScore()
+{
+	return highScore;
+}
+
+void Snake::SetHighScore(int x)
+{
+	highScore = x;
+}
+
 std::vector<SnakeSegment> Snake::GetSegments()
 {
 	return m_SegmentPos;
