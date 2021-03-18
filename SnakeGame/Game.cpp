@@ -6,12 +6,21 @@ Game::Game()
 	:m_window("Electric Snake", { 800,600 }), GameBackground(800, 600, "Snake Background.png"), SnakeEatSound("SnakeEats.wav")
 {
 	apple.SetSpawnLocation(SetConsumableLocation());
+	if (!AppleTex.loadFromFile("AppleTex.png"))
+	{
+		printf("AppleTex not loaded");
+	}
+	apple.SetTexture(AppleTex);
+	AppleTex.setSmooth(true);
+
+
 	if (!ScoreFont.loadFromFile("SnakeFont.otf"))
 	{
 		printf("failed to load snake font");
 	}
 
 	ScoreText.setFont(ScoreFont);
+	ScoreText.setCharacterSize(25);
 	ScoreText.setPosition(sf::Vector2f(2, 10));
 
 	HighScoreText.setFont(ScoreFont);

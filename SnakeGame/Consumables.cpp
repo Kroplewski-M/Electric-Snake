@@ -6,8 +6,7 @@
 
 Consumables::Consumables()
 {
-	consumable.setRadius(10);
-	consumable.setFillColor(sf::Color::Green);
+	consumable.setSize({ 20,20 });
 }
 
 Consumables::~Consumables()
@@ -17,8 +16,7 @@ Consumables::~Consumables()
 
 void Consumables::Update()
 {
-		consumable.setPosition(m_pos);
-		
+	consumable.setPosition(m_pos);
 	
 }
 
@@ -61,5 +59,10 @@ sf::Vector2f Consumables::SetSpawnLocation(sf::Vector2f loc)
 {
 	m_pos = loc;
 	return m_pos;
+}
+
+void Consumables::SetTexture(sf::Texture& tex)
+{
+	consumable.setTexture(&tex);
 }
 

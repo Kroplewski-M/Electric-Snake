@@ -1,6 +1,7 @@
 #include "Snake.h"
 #include "Window.h"
-
+#include <thread>
+#include <chrono>
 
 Snake::Snake()
 	:rectangle({snakeSegmentSize.x - 1,snakeSegmentSize.y - 1 }),GameOver("GameOver.wav"),HighScoreFile("HighScore")
@@ -12,7 +13,6 @@ Snake::Snake()
 	m_SegmentPos.emplace_back(SnakeSegment{ 140,20 });
 	m_SegmentPos.emplace_back(SnakeSegment{ 120,20});
 	
-
 	highScore = HighScoreFile.GetScore();
 }
 
@@ -76,12 +76,11 @@ void Snake::Update()
 void Snake::Render(Window& window)
 {
 
-	for (const auto& i: m_SegmentPos)
+	for (int i = 0; i != m_SegmentPos.size(); i++)
 	{
-		rectangle.setPosition(sf::Vector2f(i.x, i.y));
+		rectangle.setPosition(sf::Vector2f(m_SegmentPos[i].x, m_SegmentPos[i].y));
 		window.Draw(rectangle);
 	}
-	
 }
 
 
@@ -123,6 +122,7 @@ void Snake::Dead()
 	GameOver.PlaySound();
 	isDead = true;
 	score = 0;
+	std::this_thread::sleep_for(std::chrono::seconds(3));
 	m_SegmentPos.clear();	
 	Respawn();
 }

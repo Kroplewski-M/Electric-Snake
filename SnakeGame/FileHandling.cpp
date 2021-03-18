@@ -20,11 +20,11 @@ void FileHandling::CreateFile()
 	file.open(fileName, std::ofstream::in | std::ofstream::out);
 	if (file.is_open())
 	{
-		std::cout << "\nFile Open\n";
+		printf("\nFile Open\n");
 	}
 	else
 	{
-		std::cout << "\nFile not created";
+		printf("\nFile not created");
 	}
 	file.close();
 }
@@ -37,7 +37,7 @@ void FileHandling::SetScore()
 		readFile >> score;
 	}
 	else
-		std::cout << "file cant open 1";
+		printf( "file cant open 1");
 	readFile.close();
 }
 
@@ -50,7 +50,7 @@ void FileHandling::OverRideScore(int score)
 	}
 	else
 	{
-		std::cout << "file cant open 2";
+		printf("file cant open 2");
 	}
 	file.close();
 }

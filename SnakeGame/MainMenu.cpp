@@ -52,6 +52,7 @@ MainMenu::~MainMenu()
 
 void MainMenu::Update(Game* game, Window* window)
 {
+
 	if (game->GetWindow()->getMouseLocation().x > StartButton.getPosition().x && game->GetWindow()->getMouseLocation().x < StartButton.getPosition().x + StartButton.getSize().x &&
 		game->GetWindow()->getMouseLocation().y > StartButton.getPosition().y && game->GetWindow()->getMouseLocation().y < StartButton.getPosition().y + StartButton.getSize().y)
 	{
@@ -104,5 +105,9 @@ sf::RectangleShape MainMenu::GetQuitButton()
 	return QuitButton;
 }
 
+void MainMenu::PulseTitle()
+{
+	
+}
 
 

@@ -39,7 +39,7 @@ private:
 	Apple apple;
 	texture GameBackground;
 	Sound SnakeEatSound;
-
+	sf::Texture AppleTex;
 	
 };
 
