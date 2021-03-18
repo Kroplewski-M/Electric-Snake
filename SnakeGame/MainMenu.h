@@ -14,6 +14,7 @@ public:
 	void Render(Window* window);
 	sf::RectangleShape GetStartButton();
 	sf::RectangleShape GetQuitButton();
+	void PulseTitle();
 
 
 private:

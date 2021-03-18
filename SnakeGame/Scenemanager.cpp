@@ -4,6 +4,7 @@ Scenemanager::Scenemanager()
 	:game(), menu(),MainMenuMusic("MainMenuMusic.wav")
 {
 	MainMenuMusic.PlaySound();
+	MainMenuMusic.SetLoop(true);
 }
 
 Scenemanager::~Scenemanager()
@@ -18,6 +19,7 @@ void Scenemanager::Update()
 		switch (myStates)
 		{
 		case GameStates::MainMenu:
+			MainMenuMusic.SetVolume(60);
 			menu.Update(&game,game.GetWindow());
 			menu.Render(game.GetWindow());
 			ChangeScene();
