@@ -1,7 +1,7 @@
-#include <SFML/Graphics.hpp>
-#include "Game.h"
 #include "Scenemanager.h"
-#include "FileHandling.h"
+
+
+
 
 int	main()
 {
@@ -13,9 +13,4 @@ int	main()
 	{
 		myScenes.Update();
 	}
-
-
-
-
-	return 0;
 }

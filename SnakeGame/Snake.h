@@ -54,6 +54,11 @@ private:
 	Direction m_direction_queue{ Direction::none };
 	Sound GameOver;
 
+	sf::Texture* snakeBodyRight = new sf::Texture;
+	sf::Texture* snakeTailRight = new sf::Texture;
+	sf::Texture* snakeHeadRight = new sf::Texture;
+
+
 	FileHandling HighScoreFile;
 };
 

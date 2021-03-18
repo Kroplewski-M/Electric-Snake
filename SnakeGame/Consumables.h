@@ -18,8 +18,9 @@ public:
 	void ToggleIsDead();
 	sf::Vector2f GetLocation();
 	sf::Vector2f SetSpawnLocation(sf::Vector2f loc);
+	void SetTexture(sf::Texture& tex);
 private:
-	sf::CircleShape consumable;
+	sf::RectangleShape consumable;
 	sf::Vector2f m_pos;
 	bool m_isAlive = true;
 
