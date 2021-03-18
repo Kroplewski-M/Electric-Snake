@@ -3,7 +3,7 @@
 
 
 Snake::Snake()
-	:rectangle({snakeSegmentSize.x - 1,snakeSegmentSize.y - 1 }),GameOver("GameOver.wav")
+	:rectangle({snakeSegmentSize.x - 1,snakeSegmentSize.y - 1 }),GameOver("GameOver.wav"),HighScoreFile("HighScore")
 {
 	rectangle.setFillColor(sf::Color::Red);
 	//rectangle.setOutlineThickness(1);
@@ -12,11 +12,16 @@ Snake::Snake()
 	m_SegmentPos.emplace_back(SnakeSegment{ 140,20 });
 	m_SegmentPos.emplace_back(SnakeSegment{ 120,20});
 	
+
+	highScore = HighScoreFile.GetScore();
 }
 
 Snake::~Snake()
 {
-
+	if (highScore > HighScoreFile.GetScore())
+	{
+		HighScoreFile.OverRideScore(highScore);
+	}
 }
 
 void Snake::Update()
@@ -189,3 +194,4 @@ Direction Snake::GetDirection()
 {
 	return m_direction;
 }
+

@@ -10,6 +10,7 @@ Game::Game()
 	{
 		printf("failed to load snake font");
 	}
+
 	ScoreText.setFont(ScoreFont);
 	ScoreText.setPosition(sf::Vector2f(2, 10));
 
@@ -24,7 +25,9 @@ Game::Game()
 }
 
 Game::~Game()
-{}
+{
+	
+}
 
 void Game::HandleInput()
 {

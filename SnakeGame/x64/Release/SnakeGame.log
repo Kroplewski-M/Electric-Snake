@@ -1,9 +1,18 @@
-﻿  Scenemanager.cpp
-C:\Users\User\Desktop\SnakeGame\SnakeGame\MainMenu.h(4,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-C:\Users\User\Desktop\SnakeGame\SnakeGame\Scenemanager.h(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+﻿  FileHandling.cpp
+  Snake.cpp
+C:\Users\User\source\repos\SnakeGame\SnakeGame\Snake.cpp(81,44): warning C4244: 'argument': conversion from 'const int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\User\source\repos\SnakeGame\SnakeGame\Snake.cpp(81,39): warning C4244: 'argument': conversion from 'const int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
   Generating code
-  3 of 322 functions ( 0.9%) were compiled, the rest were copied from previous compilation.
+  2 of 413 functions ( 0.5%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
+    2 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
-  SnakeGame.vcxproj -> C:\Users\User\Desktop\SnakeGame\x64\Release\SnakeGame.exe
+  SnakeGame.vcxproj -> C:\Users\User\source\repos\SnakeGame\x64\Release\SnakeGame.exe

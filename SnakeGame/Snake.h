@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "Sound.h"
+#include "FileHandling.h"
 
 class Window;
 
@@ -38,6 +39,9 @@ public:
 	void SetHighScore(int x);
 	std::vector<SnakeSegment> GetSegments();
 	Direction GetDirection();
+
+
+
 private:
 	int score = 0;
 	int highScore = 0;
@@ -49,6 +53,8 @@ private:
 	Direction m_direction{ Direction::Right };
 	Direction m_direction_queue{ Direction::none };
 	Sound GameOver;
+
+	FileHandling HighScoreFile;
 };
 
 

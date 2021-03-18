@@ -39,5 +39,7 @@ private:
 	Apple apple;
 	texture GameBackground;
 	Sound SnakeEatSound;
+
+	
 };
 
