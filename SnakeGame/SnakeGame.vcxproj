@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Apple.h" />
+    <ClInclude Include="Battery.h" />
     <ClInclude Include="Consumables.h" />
     <ClInclude Include="FileHandling.h" />
     <ClInclude Include="Game.h" />
@@ -34,6 +35,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Apple.cpp" />
+    <ClCompile Include="Battery.cpp" />
     <ClCompile Include="Consumables.cpp" />
     <ClCompile Include="FileHandling.cpp" />
     <ClCompile Include="Game.cpp" />

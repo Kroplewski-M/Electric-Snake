@@ -56,7 +56,7 @@ void MainMenu::Update(Game* game, Window* window)
 	if (game->GetWindow()->getMouseLocation().x > StartButton.getPosition().x && game->GetWindow()->getMouseLocation().x < StartButton.getPosition().x + StartButton.getSize().x &&
 		game->GetWindow()->getMouseLocation().y > StartButton.getPosition().y && game->GetWindow()->getMouseLocation().y < StartButton.getPosition().y + StartButton.getSize().y)
 	{
-		StartButton.setOutlineThickness(1);
+		StartButton.setOutlineThickness(2);
 		StartButton.setOutlineColor(sf::Color::White);
 
 	}
@@ -68,7 +68,7 @@ void MainMenu::Update(Game* game, Window* window)
 	if (game->GetWindow()->getMouseLocation().x > QuitButton.getPosition().x && game->GetWindow()->getMouseLocation().x < QuitButton.getPosition().x + QuitButton.getSize().x &&
 		game->GetWindow()->getMouseLocation().y > QuitButton.getPosition().y && game->GetWindow()->getMouseLocation().y < QuitButton.getPosition().y + QuitButton.getSize().y)
 	{
-		QuitButton.setOutlineThickness(1);
+		QuitButton.setOutlineThickness(2);
 		QuitButton.setOutlineColor(sf::Color::White);
 
 	}

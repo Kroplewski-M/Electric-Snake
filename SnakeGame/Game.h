@@ -6,7 +6,7 @@
 #include "Apple.h"
 #include "texture.h"
 #include "MainMenu.h"
-
+#include "Battery.h"
 
 class Snake;
 
@@ -21,7 +21,8 @@ public:
 	void Render();
 	Window* GetWindow();
 	bool ConsumableIsColliding(Snake& m_snake, const sf::Vector2f& pos_);
-	sf::Vector2f SetConsumableLocation();
+	sf::Vector2f SetAppleLocation();
+	sf::Vector2f SetBatteryLocation();
 	void SnakeEats();
 	void DrawGrid();
 	void MoveSnake();
@@ -37,9 +38,12 @@ private:
 	Window m_window;
 	Snake snake;
 	Apple apple;
+	Battery battery;
 	texture GameBackground;
 	Sound SnakeEatSound;
+	Sound SnakeElectrifiedSound;
 	sf::Texture AppleTex;
+	sf::Texture BatteryTex;
 	
 };
 
