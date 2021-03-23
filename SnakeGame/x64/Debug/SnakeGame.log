@@ -1,66 +1,32 @@
-﻿  Apple.cpp
-  Consumables.cpp
-C:\Users\User\Desktop\SnakeGame\SnakeGame\Consumables.cpp(50,24): warning C4804: '-': unsafe use of type 'bool' in operation
-  FileHandling.cpp
-  Game.cpp
-C:\Users\User\Desktop\SnakeGame\SnakeGame\MainMenu.h(4,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-C:\Users\User\Desktop\SnakeGame\SnakeGame\Game.cpp(89,32): warning C4244: 'argument': conversion from 'const int' to 'T', possible loss of data
+﻿  Snake.cpp
+C:\Users\User\source\repos\SnakeGame\SnakeGame\Snake.cpp(85,72): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\User\Desktop\SnakeGame\SnakeGame\Game.cpp(89,24): warning C4244: 'argument': conversion from 'const int' to 'T', possible loss of data
+C:\Users\User\source\repos\SnakeGame\SnakeGame\Snake.cpp(85,53): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\User\Desktop\SnakeGame\SnakeGame\Game.cpp(99,15): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\User\Desktop\SnakeGame\SnakeGame\Game.cpp(100,34): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-  Main.cpp
-C:\Users\User\Desktop\SnakeGame\SnakeGame\MainMenu.h(4,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-C:\Users\User\Desktop\SnakeGame\SnakeGame\Scenemanager.h(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-C:\Users\User\Desktop\SnakeGame\SnakeGame\Main.cpp(8,13): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-  MainMenu.cpp
-C:\Users\User\Desktop\SnakeGame\SnakeGame\MainMenu.h(4,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-C:\Users\User\Desktop\SnakeGame\SnakeGame\MainMenu.cpp(10,55): warning C4390: ';': empty controlled statement found; is this the intent?
-C:\Users\User\Desktop\SnakeGame\SnakeGame\MainMenu.cpp(28,7): warning C4996: 'sf::Text::setColor': was declared deprecated
-C:\Users\User\Desktop\SnakeGame\SnakeGame\MainMenu.cpp(34,7): warning C4996: 'sf::Text::setColor': was declared deprecated
-C:\Users\User\Desktop\SnakeGame\SnakeGame\MainMenu.cpp(41,6): warning C4996: 'sf::Text::setColor': was declared deprecated
-  Scenemanager.cpp
-C:\Users\User\Desktop\SnakeGame\SnakeGame\MainMenu.h(4,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-C:\Users\User\Desktop\SnakeGame\SnakeGame\Scenemanager.h(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  Snake.cpp
-C:\Users\User\Desktop\SnakeGame\SnakeGame\Snake.cpp(81,72): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\User\source\repos\SnakeGame\SnakeGame\Snake.cpp(203,80): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\User\Desktop\SnakeGame\SnakeGame\Snake.cpp(81,53): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\User\source\repos\SnakeGame\SnakeGame\Snake.cpp(203,59): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-  Sound.cpp
-  Window.cpp
-C:\Users\User\Desktop\SnakeGame\SnakeGame\Window.cpp(79,90): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+C:\Users\User\source\repos\SnakeGame\SnakeGame\Snake.cpp(208,84): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
-          [
-              T=int
-          ]
-          and
           [
               T=float
           ]
-C:\Users\User\Desktop\SnakeGame\SnakeGame\Window.cpp(79,54): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
+C:\Users\User\source\repos\SnakeGame\SnakeGame\Snake.cpp(208,64): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
-          [
-              T=int
-          ]
-          and
           [
               T=float
           ]
-  Generating Code...
-  LINK : C:\Users\User\Desktop\SnakeGame\x64\Debug\SnakeGame.exe not found or not built by the last incremental link; performing full link
-Scenemanager.obj : error LNK2019: unresolved external symbol "public: void __cdecl Music::SetVolume(int)" (?SetVolume@Music@@QEAAXH@Z) referenced in function "public: void __cdecl Scenemanager::Update(void)" (?Update@Scenemanager@@QEAAXXZ)
-C:\Users\User\Desktop\SnakeGame\x64\Debug\SnakeGame.exe : fatal error LNK1120: 1 unresolved externals
+  SnakeGame.vcxproj -> C:\Users\User\source\repos\SnakeGame\x64\Debug\SnakeGame.exe

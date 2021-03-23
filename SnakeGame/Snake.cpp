@@ -2,6 +2,7 @@
 #include "Window.h"
 #include <thread>
 #include <chrono>
+#include <iostream>
 
 Snake::Snake()
 	:rectangle({snakeSegmentSize.x - 1,snakeSegmentSize.y - 1 }),GameOver("GameOver.wav"),HighScoreFile("HighScore")
@@ -14,6 +15,9 @@ Snake::Snake()
 	m_SegmentPos.emplace_back(SnakeSegment{ 120,20});
 	
 	highScore = HighScoreFile.GetScore();
+
+	ElectricBox.setFillColor(sf::Color(0, 0, 255, 120));
+	ElectricBox.setSize(sf::Vector2f(20, 20));
 }
 
 Snake::~Snake()
@@ -75,6 +79,10 @@ void Snake::Update()
 
 void Snake::Render(Window& window)
 {
+	if (IsElectrified == true)
+	{
+		BecomeElectrified(window);
+	}
 
 	for (int i = 0; i != m_SegmentPos.size(); i++)
 	{
@@ -183,6 +191,40 @@ int Snake::GetHighScore()
 void Snake::SetHighScore(int x)
 {
 	highScore = x;
+}
+
+void Snake::BecomeElectrified(Window& window)
+{
+	for(int i = 0; i < m_SegmentPos.size(); i++)
+	{
+		int a, b;
+		for(a = -1; a <= 1; a++)
+		{
+			for(b = -1; b <= 1; b++)
+			{
+				if(a == b)
+					continue;
+
+				float newX = m_SegmentPos[i].x + snakeSegmentSize.x * b;
+				float newY = m_SegmentPos[i].y + snakeSegmentSize.y * a;
+
+				if(newY < 0 || newY >= 600 || newX < 120 || newX  >= 600)
+					continue;
+				
+				ElectricBox.setPosition(newX, newY);
+				ElectricBody.emplace_back(ElectricBox);
+			}
+		}
+	}
+	
+	
+
+	for(int j = 0; j < ElectricBody.size(); j++)
+	{
+		window.Draw(ElectricBody[j]);
+	}
+	ElectricBody.clear();
+
 }
 
 std::vector<SnakeSegment> Snake::GetSegments()

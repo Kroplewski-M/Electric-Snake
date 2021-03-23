@@ -37,13 +37,16 @@ public:
 	int GetScore();
 	int GetHighScore();
 	void SetHighScore(int x);
+	void BecomeElectrified(Window& window);
 	std::vector<SnakeSegment> GetSegments();
 	Direction GetDirection();
 
 
-
 private:
+	sf::RectangleShape ElectricBox;
+	std::vector<sf::RectangleShape>ElectricBody;
 	int score = 0;
+	bool IsElectrified = true;
 	int highScore = 0;
 	bool isDead = false;
 	sf::Clock clock;
