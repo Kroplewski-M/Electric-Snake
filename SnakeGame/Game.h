@@ -28,6 +28,7 @@ public:
 	void MoveSnake();
 	void CheckHighScore(int x);
 	void BatteryLocationTimer();
+	void SetAllAppleLocation();
 private:
 
 	sf::Font ScoreFont;
@@ -42,7 +43,6 @@ private:
 	Snake snake;
 	Apple apple;
 	std::vector<Apple>AllApples;
-	std::vector<Apple>::iterator iter;
 	Battery battery;
 	texture GameBackground;
 	Sound SnakeEatSound;

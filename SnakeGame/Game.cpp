@@ -5,8 +5,7 @@
 Game::Game()
 	:m_window("Electric Snake", { 800,600 }), GameBackground(800, 600, "Snake Background.png"), SnakeEatSound("SnakeEats.wav"), SnakeElectrifiedSound("BatterySound.wav")
 {
-	
-	apple.SetSpawnLocation(SetAppleLocation());
+
 	if (!AppleTex.loadFromFile("AppleTex.png"))
 	{
 		printf("AppleTex not loaded");
@@ -24,6 +23,16 @@ Game::Game()
 	{
 		printf("failed to load snake font");
 	}
+
+	AllApples.push_back(apple);
+	AllApples.push_back(apple);
+	AllApples.push_back(apple);
+	AllApples.push_back(apple);
+	AllApples.push_back(apple);
+
+	SetAllAppleLocation();
+
+
 
 	ScoreText.setFont(ScoreFont);
 	ScoreText.setCharacterSize(25);
@@ -58,7 +67,11 @@ void Game::Update()
 
 	SnakeEats();
 
-	apple.Update();
+	for (auto& i: AllApples)
+	{
+		i.Update();
+	}
+
 	battery.Update();
 	
 }
@@ -70,8 +83,11 @@ void Game::Render()
 	//DRAW GRID
 	DrawGrid();
 
+	for (auto& i: AllApples)
+	{
+		i.Render(m_window);
+	}
 
-	apple.Render(m_window);
 	if (BatteryClock.getElapsedTime().asSeconds() >= 10)
 	{
 		battery.Render(m_window);
@@ -111,7 +127,7 @@ sf::Vector2f Game::SetAppleLocation()
 			randY = (((rand() % 601) % 20) * 20);
 		} while (ConsumableIsColliding(snake, sf::Vector2f(randX, randY)));
 		apple.SetSpawnLocation({ randX, randY });
-	
+
 	return apple.GetLocation();
 }
 sf::Vector2f Game::SetBatteryLocation()
@@ -135,11 +151,14 @@ void Game::SnakeEats()
 
 	if (snake.getIsDead() == false)
 	{
-		if (snake.GetSegments().front().x == apple.GetLocation().x && snake.GetSegments().front().y == apple.GetLocation().y)
+		for (auto& i: AllApples)
 		{
-			SnakeEatSound.PlaySound();
-			snake.Grow();
-			apple.SetSpawnLocation(SetAppleLocation());
+			if (snake.GetSegments().front().x == i.GetLocation().x && snake.GetSegments().front().y == i.GetLocation().y)
+			{
+				SnakeEatSound.PlaySound();
+				snake.Grow();
+				i.SetSpawnLocation(SetAppleLocation());
+			}
 		}
 		if (snake.GetSegments().front().x == battery.GetLocation().x && snake.GetSegments().front().y == battery.GetLocation().y)
 		{
@@ -208,6 +227,14 @@ void Game::BatteryLocationTimer()
 	{
 		battery.SetSpawnLocation(SetBatteryLocation());
 		SpawnBattery = false;
+	}
+}
+
+void Game::SetAllAppleLocation()
+{
+	for (auto& i : AllApples)
+	{
+		i.SetSpawnLocation(SetAppleLocation());
 	}
 }
 

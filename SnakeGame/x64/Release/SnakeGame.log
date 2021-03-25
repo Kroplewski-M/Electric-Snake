@@ -1,18 +1,22 @@
-﻿  Snake.cpp
-C:\Users\User\source\repos\SnakeGame\SnakeGame\Snake.cpp(77,59): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\User\source\repos\SnakeGame\SnakeGame\Snake.cpp(100,72): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+﻿  Game.cpp
+C:\Users\User\source\repos\SnakeGame\SnakeGame\MainMenu.h(4,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\User\source\repos\SnakeGame\SnakeGame\Game.cpp(116,32): warning C4244: 'argument': conversion from 'const int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\User\source\repos\SnakeGame\SnakeGame\Snake.cpp(100,53): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\User\source\repos\SnakeGame\SnakeGame\Game.cpp(116,24): warning C4244: 'argument': conversion from 'const int' to 'T', possible loss of data
           with
           [
               T=float
           ]
+C:\Users\User\source\repos\SnakeGame\SnakeGame\Game.cpp(126,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\source\repos\SnakeGame\SnakeGame\Game.cpp(127,35): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\source\repos\SnakeGame\SnakeGame\Game.cpp(137,15): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\source\repos\SnakeGame\SnakeGame\Game.cpp(138,34): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
   Generating code
-  1 of 481 functions ( 0.2%) were compiled, the rest were copied from previous compilation.
+  4 of 518 functions ( 0.8%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    1 functions had inline decision re-evaluated but remain unchanged
+    8 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   SnakeGame.vcxproj -> C:\Users\User\source\repos\SnakeGame\x64\Release\SnakeGame.exe
