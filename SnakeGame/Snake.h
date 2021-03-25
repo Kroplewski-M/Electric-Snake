@@ -41,9 +41,9 @@ public:
 	void BecomeElectrified(Window& window);
 	void SetIsElectrified(bool electrified);
 	void SetTimeStamp(int time);
+	int GetCountDown();
 	std::vector<SnakeSegment> GetSegments();
 	Direction GetDirection();
-
 
 private:
 	sf::Clock ElectrifiedClock;
@@ -65,6 +65,9 @@ private:
 	sf::Texture* snakeBodyRight = new sf::Texture;
 	sf::Texture* snakeTailRight = new sf::Texture;
 	sf::Texture* snakeHeadRight = new sf::Texture;
+
+	sf::Clock GameClock;
+	int CountDown = 90;
 
 
 	FileHandling HighScoreFile;

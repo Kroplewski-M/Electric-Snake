@@ -84,6 +84,19 @@ void Snake::Update()
 				IsElectrified = false;
 			}
 		}
+
+
+		int timer = GameClock.getElapsedTime().asSeconds();
+
+		if (timer > 0)
+		{
+			CountDown--;
+			GameClock.restart();
+		}
+		if (CountDown <= 0)
+		{
+			Dead();
+		}
 	}
 }
 
@@ -138,8 +151,9 @@ void Snake::ChangeDirection(Direction newDirection)
 
 void Snake::Dead()
 {
-	GameOver.PlaySound();
 	isDead = true;
+	GameOver.PlaySound();
+	IsElectrified = false;
 	score = 0;
 	std::this_thread::sleep_for(std::chrono::seconds(3));
 	m_SegmentPos.clear();	
@@ -180,12 +194,13 @@ void Snake::Respawn()
 {
 	if (isDead == true)
 	{
-		isDead = false;
 		m_SegmentPos.emplace_back(SnakeSegment{ 160,20 });
 		m_SegmentPos.emplace_back(SnakeSegment{ 140,20 });
 		m_SegmentPos.emplace_back(SnakeSegment{ 120,20 });
 		m_direction = Direction::none;
 		m_direction_queue = Direction::none;
+		isDead = false;
+		CountDown = 90;
 	}
 }
 
@@ -252,6 +267,11 @@ void Snake::SetTimeStamp(int time)
 	}
 }
 
+int Snake::GetCountDown()
+{
+	return CountDown;
+}
+
 std::vector<SnakeSegment> Snake::GetSegments()
 {
 	return m_SegmentPos;
@@ -261,4 +281,6 @@ Direction Snake::GetDirection()
 {
 	return m_direction;
 }
+
+
 

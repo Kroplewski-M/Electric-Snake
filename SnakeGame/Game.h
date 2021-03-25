@@ -39,6 +39,12 @@ private:
 	bool SpawnBattery = false;
 	int once = 0;
 	sf::Clock BatteryClock;
+
+	
+	sf::Text CountDownText;
+	sf::CircleShape CountDownCircle;
+	sf::Texture CountDownTexture;
+
 	Window m_window;
 	Snake snake;
 	Apple apple;

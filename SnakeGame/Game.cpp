@@ -5,6 +5,11 @@
 Game::Game()
 	:m_window("Electric Snake", { 800,600 }), GameBackground(800, 600, "Snake Background.png"), SnakeEatSound("SnakeEats.wav"), SnakeElectrifiedSound("BatterySound.wav")
 {
+	if (!CountDownTexture.loadFromFile("CountDownClock.jpg"))
+	{
+		printf("CountDownClockTexture not loaded");
+	}
+	CountDownTexture.setSmooth(true);
 
 	if (!AppleTex.loadFromFile("AppleTex.png"))
 	{
@@ -12,6 +17,7 @@ Game::Game()
 	}
 	apple.SetTexture(AppleTex);
 	AppleTex.setSmooth(true);
+
 	if (!BatteryTex.loadFromFile("batteryTex.png"))
 	{
 		printf("batteryTex not loaded");
@@ -46,6 +52,16 @@ Game::Game()
 	Tips.setCharacterSize(25);
 	Tips.setPosition(600, 10);
 	Tips.setString("Tips: \n\n -Arrows: Move snake \n\n -Eat Apple to grow \n\n -Eat battery to \n be electrified ");
+
+	CountDownText.setFont(ScoreFont);
+	CountDownText.setColor(sf::Color::Red);
+	CountDownText.setCharacterSize(30);
+	CountDownText.setPosition(40, 500);
+
+	CountDownCircle.setRadius(50);
+	CountDownCircle.setPosition(10, 465);
+	CountDownCircle.setTexture(&CountDownTexture);
+
 }
 
 Game::~Game()
@@ -74,6 +90,8 @@ void Game::Update()
 
 	battery.Update();
 	
+
+	
 }
 
 void Game::Render()
@@ -98,6 +116,10 @@ void Game::Render()
 	HighScoreText.setString("HighScore: \n" + std::to_string(snake.GetHighScore()));
 	ScoreText.setString("Score: " + std::to_string(snake.GetScore()));
 	CheckHighScore(snake.GetScore());
+	CountDownText.setString( std::to_string(snake.GetCountDown()));
+
+	m_window.Draw(CountDownCircle);
+	m_window.Draw(CountDownText);
 	m_window.Draw(HighScoreText);
 	m_window.Draw(ScoreText);
 	m_window.Draw(Tips);
