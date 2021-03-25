@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include <SFML/System.hpp>
 #include "Sound.h"
 #include "FileHandling.h"
 
@@ -38,15 +39,19 @@ public:
 	int GetHighScore();
 	void SetHighScore(int x);
 	void BecomeElectrified(Window& window);
+	void SetIsElectrified(bool electrified);
+	void SetTimeStamp(int time);
 	std::vector<SnakeSegment> GetSegments();
 	Direction GetDirection();
 
 
 private:
+	sf::Clock ElectrifiedClock;
 	sf::RectangleShape ElectricBox;
 	std::vector<sf::RectangleShape>ElectricBody;
+	int TimeStamp;
 	int score = 0;
-	bool IsElectrified = true;
+	bool IsElectrified = false;
 	int highScore = 0;
 	bool isDead = false;
 	sf::Clock clock;

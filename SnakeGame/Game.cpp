@@ -5,8 +5,8 @@
 Game::Game()
 	:m_window("Electric Snake", { 800,600 }), GameBackground(800, 600, "Snake Background.png"), SnakeEatSound("SnakeEats.wav"), SnakeElectrifiedSound("BatterySound.wav")
 {
+	
 	apple.SetSpawnLocation(SetAppleLocation());
-	battery.SetSpawnLocation(SetBatteryLocation());
 	if (!AppleTex.loadFromFile("AppleTex.png"))
 	{
 		printf("AppleTex not loaded");
@@ -72,7 +72,11 @@ void Game::Render()
 
 
 	apple.Render(m_window);
-	battery.Render(m_window);
+	if (BatteryClock.getElapsedTime().asSeconds() >= 10)
+	{
+		battery.Render(m_window);
+		SpawnBattery = true;
+	}
 	snake.Render(m_window);
 
 	HighScoreText.setString("HighScore: \n" + std::to_string(snake.GetHighScore()));
@@ -102,12 +106,12 @@ bool Game::ConsumableIsColliding(Snake& m_snake, const sf::Vector2f& pos_)
 sf::Vector2f Game::SetAppleLocation()
 {
 	float randX, randY;
-	do {
-		randX = 120 + (((rand() % 601) % 20) * 20);
-		randY = (((rand() % 601) % 20) * 20);
-	} while (ConsumableIsColliding(snake, sf::Vector2f(randX, randY)));
-	apple.SetSpawnLocation({ randX, randY }) ;
-
+		do {
+			randX = 120 + (((rand() % 601) % 20) * 20);
+			randY = (((rand() % 601) % 20) * 20);
+		} while (ConsumableIsColliding(snake, sf::Vector2f(randX, randY)));
+		apple.SetSpawnLocation({ randX, randY });
+	
 	return apple.GetLocation();
 }
 sf::Vector2f Game::SetBatteryLocation()
@@ -123,6 +127,11 @@ sf::Vector2f Game::SetBatteryLocation()
 }
 void Game::SnakeEats()
 {
+	if (BatteryClock.getElapsedTime().asSeconds() >= 10 && once == 0)
+	{
+		battery.SetSpawnLocation(SetBatteryLocation());
+		once++;
+	}
 
 	if (snake.getIsDead() == false)
 	{
@@ -134,9 +143,10 @@ void Game::SnakeEats()
 		}
 		if (snake.GetSegments().front().x == battery.GetLocation().x && snake.GetSegments().front().y == battery.GetLocation().y)
 		{
+			BatteryClock.restart();
 			SnakeElectrifiedSound.PlaySound();
 			snake.Grow();
-			battery.SetSpawnLocation(SetBatteryLocation());
+			snake.SetIsElectrified(true);
 		}
 	}
 }
@@ -188,6 +198,16 @@ void Game::CheckHighScore(int x)
 	if (snake.GetScore() > snake.GetHighScore())
 	{
 		snake.SetHighScore(snake.GetScore());
+	}
+}
+
+void Game::BatteryLocationTimer()
+{
+
+	if (SpawnBattery == true)
+	{
+		battery.SetSpawnLocation(SetBatteryLocation());
+		SpawnBattery = false;
 	}
 }
 

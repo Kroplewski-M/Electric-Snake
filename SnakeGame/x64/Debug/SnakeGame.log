@@ -1,32 +1,17 @@
-﻿  Snake.cpp
-C:\Users\User\source\repos\SnakeGame\SnakeGame\Snake.cpp(85,72): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+﻿  Game.cpp
+C:\Users\User\source\repos\SnakeGame\SnakeGame\MainMenu.h(4,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\User\source\repos\SnakeGame\SnakeGame\Game.cpp(112,32): warning C4244: 'argument': conversion from 'const int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\User\source\repos\SnakeGame\SnakeGame\Snake.cpp(85,53): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\User\source\repos\SnakeGame\SnakeGame\Game.cpp(112,24): warning C4244: 'argument': conversion from 'const int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\User\source\repos\SnakeGame\SnakeGame\Snake.cpp(203,80): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\Users\User\source\repos\SnakeGame\SnakeGame\Snake.cpp(203,59): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\Users\User\source\repos\SnakeGame\SnakeGame\Snake.cpp(208,84): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\Users\User\source\repos\SnakeGame\SnakeGame\Snake.cpp(208,64): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
+C:\Users\User\source\repos\SnakeGame\SnakeGame\Game.cpp(125,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\source\repos\SnakeGame\SnakeGame\Game.cpp(126,35): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\source\repos\SnakeGame\SnakeGame\Game.cpp(136,15): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\source\repos\SnakeGame\SnakeGame\Game.cpp(137,34): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
   SnakeGame.vcxproj -> C:\Users\User\source\repos\SnakeGame\x64\Debug\SnakeGame.exe

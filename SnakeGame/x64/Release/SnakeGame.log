@@ -1,16 +1,17 @@
 ﻿  Snake.cpp
-C:\Users\User\source\repos\SnakeGame\SnakeGame\Snake.cpp(89,72): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\User\source\repos\SnakeGame\SnakeGame\Snake.cpp(77,59): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\User\source\repos\SnakeGame\SnakeGame\Snake.cpp(100,72): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\User\source\repos\SnakeGame\SnakeGame\Snake.cpp(89,53): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\User\source\repos\SnakeGame\SnakeGame\Snake.cpp(100,53): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
   Generating code
-  3 of 463 functions ( 0.6%) were compiled, the rest were copied from previous compilation.
+  1 of 481 functions ( 0.2%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
     1 functions had inline decision re-evaluated but remain unchanged
   Finished generating code

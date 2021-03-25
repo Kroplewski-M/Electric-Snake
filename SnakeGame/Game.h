@@ -27,6 +27,7 @@ public:
 	void DrawGrid();
 	void MoveSnake();
 	void CheckHighScore(int x);
+	void BatteryLocationTimer();
 private:
 
 	sf::Font ScoreFont;
@@ -34,10 +35,14 @@ private:
 	sf::Text HighScoreText;
 	sf::Text Tips;
 
-	sf::Clock clock;
+	bool SpawnBattery = false;
+	int once = 0;
+	sf::Clock BatteryClock;
 	Window m_window;
 	Snake snake;
 	Apple apple;
+	std::vector<Apple>AllApples;
+	std::vector<Apple>::iterator iter;
 	Battery battery;
 	texture GameBackground;
 	Sound SnakeEatSound;

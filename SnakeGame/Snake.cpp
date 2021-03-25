@@ -73,6 +73,17 @@ void Snake::Update()
 			break;
 		}
 		CheckCollision();
+
+		SetTimeStamp(ElectrifiedClock.getElapsedTime().asSeconds());
+
+		if (IsElectrified == true)
+		{
+	
+			if (ElectrifiedClock.getElapsedTime().asSeconds() - TimeStamp >= 10)
+			{
+				IsElectrified = false;
+			}
+		}
 	}
 }
 
@@ -195,36 +206,50 @@ void Snake::SetHighScore(int x)
 
 void Snake::BecomeElectrified(Window& window)
 {
-	for(int i = 0; i < m_SegmentPos.size(); i++)
+
+	for (int i = 0; i < m_SegmentPos.size(); i++)
 	{
 		int a, b;
-		for(a = -1; a <= 1; a++)
+		for (a = -1; a <= 1; a++)
 		{
-			for(b = -1; b <= 1; b++)
+			for (b = -1; b <= 1; b++)
 			{
-				if(a == b)
+
+				if (a == 0 && b == 0)
 					continue;
 
-				float newX = m_SegmentPos[i].x + snakeSegmentSize.x * b;
-				float newY = m_SegmentPos[i].y + snakeSegmentSize.y * a;
+				float newX = m_SegmentPos[i].x + (snakeSegmentSize.x * b);
+				float newY = m_SegmentPos[i].y + (snakeSegmentSize.y * a);
 
-				if(newY < 0 || newY >= 600 || newX < 120 || newX  >= 600)
+				if (newY < 0 || newY >= 600 || newX < 120 || newX >= 600)
 					continue;
-				
+
 				ElectricBox.setPosition(newX, newY);
 				ElectricBody.emplace_back(ElectricBox);
 			}
+		}	
+	}
+
+
+
+		for (int j = 0; j < ElectricBody.size(); j++)
+		{
+			window.Draw(ElectricBody[j]);
 		}
-	}
-	
-	
+		ElectricBody.clear();
+}
 
-	for(int j = 0; j < ElectricBody.size(); j++)
+void Snake::SetIsElectrified(bool electrified)
+{
+	IsElectrified = electrified;
+}
+
+void Snake::SetTimeStamp(int time)
+{
+	if (IsElectrified == false)
 	{
-		window.Draw(ElectricBody[j]);
+		TimeStamp = time;
 	}
-	ElectricBody.clear();
-
 }
 
 std::vector<SnakeSegment> Snake::GetSegments()
