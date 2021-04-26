@@ -1,12 +1,12 @@
 #pragma once
 #include "window.h"
 #include <vector>
-#include "Snake.h"
 #include "Consumables.h"
 #include "Apple.h"
 #include "texture.h"
 #include "MainMenu.h"
 #include "Battery.h"
+#include "AISnake.h"
 
 class Snake;
 
@@ -48,6 +48,11 @@ private:
 	Window m_window;
 
 	Snake snake;
+	AISnake* AI1 = new AISnake;
+	AISnake* AI2 = new AISnake;
+	AISnake* AI3 = new AISnake;
+
+	std::vector<AISnake*>AISnakes;
 
 
 	Apple apple;

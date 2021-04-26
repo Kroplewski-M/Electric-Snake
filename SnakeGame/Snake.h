@@ -42,14 +42,16 @@ public:
 	void SetIsElectrified(bool electrified);
 	void SetTimeStamp(int time);
 	int GetCountDown();
+	sf::Color GetRandomColor();
 	std::vector<SnakeSegment> GetSegments();
 	Direction GetDirection();
+	void SetOutline(bool x);
 
 private:
 	sf::Clock ElectrifiedClock;
 	sf::RectangleShape ElectricBox;
 	std::vector<sf::RectangleShape>ElectricBody;
-	int TimeStamp;
+	int TimeStamp = 0;
 	int score = 0;
 	bool IsElectrified = false;
 	int highScore = 0;

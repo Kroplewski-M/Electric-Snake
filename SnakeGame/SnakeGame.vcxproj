@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AISnake.h" />
     <ClInclude Include="Apple.h" />
     <ClInclude Include="Battery.h" />
     <ClInclude Include="Consumables.h" />
@@ -34,6 +35,7 @@
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AISnake.cpp" />
     <ClCompile Include="Apple.cpp" />
     <ClCompile Include="Battery.cpp" />
     <ClCompile Include="Consumables.cpp" />

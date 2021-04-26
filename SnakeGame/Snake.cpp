@@ -4,13 +4,13 @@
 #include <chrono>
 #include <iostream>
 
-Snake::Snake()
+ Snake::Snake()
 	:rectangle({snakeSegmentSize.x - 1,snakeSegmentSize.y - 1 }),GameOver("GameOver.wav"),HighScoreFile("HighScore")
 {
 	randomSpawnX = (rand()%(25-8+ 1) + 8)* 20;
 	randomSpawnY = (rand() % 25)* 20;
 
-	rectangle.setFillColor(sf::Color::Red);
+	rectangle.setFillColor(GetRandomColor());
 	//rectangle.setOutlineThickness(1);
 	//rectangle.setOutlineColor(sf::Color::White);
 	m_SegmentPos.emplace_back(SnakeSegment{ randomSpawnX,randomSpawnY });
@@ -21,8 +21,6 @@ Snake::Snake()
 
 	ElectricBox.setFillColor(sf::Color(0, 0, 255, 120));
 	ElectricBox.setSize(sf::Vector2f(20, 20));
-	std::cout << randomSpawnX << std::endl;
-	std::cout << randomSpawnY;
 }
 
 Snake::~Snake()
@@ -206,6 +204,7 @@ void Snake::Respawn()
 		m_direction_queue = Direction::none;
 		isDead = false;
 		CountDown = 90;
+		SetOutline(true);
 	}
 }
 
@@ -277,6 +276,23 @@ int Snake::GetCountDown()
 	return CountDown;
 }
 
+sf::Color Snake::GetRandomColor()
+{
+	int color = 0;
+	color = rand() % (5 - 1 + 1) + 1;
+
+	if (color == 1)
+		return sf::Color::Red;
+	if (color == 2)
+		return sf::Color::Cyan;
+	if (color == 3)
+		return sf::Color::Green;
+	if (color == 4)
+		return sf::Color::Magenta;
+	if (color == 5)
+		return sf::Color::Yellow;
+}
+
 std::vector<SnakeSegment> Snake::GetSegments()
 {
 	return m_SegmentPos;
@@ -287,5 +303,17 @@ Direction Snake::GetDirection()
 	return m_direction;
 }
 
+void Snake::SetOutline(bool x)
+{
+	if (x == true)
+	{
+		rectangle.setOutlineThickness(2);
+		rectangle.setOutlineColor(sf::Color::White);
+	}
+	if (x == false)
+	{
+		rectangle.setOutlineThickness(0);
+	}
+}
 
 

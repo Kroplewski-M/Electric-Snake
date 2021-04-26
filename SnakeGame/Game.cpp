@@ -62,6 +62,14 @@ Game::Game()
 	CountDownCircle.setPosition(10, 465);
 	CountDownCircle.setTexture(&CountDownTexture);
 
+	
+	AISnakes.emplace_back(AI1);
+	AISnakes.emplace_back(AI2);
+	AISnakes.emplace_back(AI3);
+	
+
+	snake.SetOutline(true);
+
 }
 
 Game::~Game()
@@ -80,6 +88,7 @@ void Game::Update()
 	m_window.Update();
 
 	snake.Update();
+	
 
 	SnakeEats();
 
@@ -112,6 +121,12 @@ void Game::Render()
 		SpawnBattery = true;
 	}
 	snake.Render(m_window);
+
+	for (auto& i : AISnakes)
+	{
+		i->Render(m_window);
+	}
+
 
 	HighScoreText.setString("HighScore: \n" + std::to_string(snake.GetHighScore()));
 	ScoreText.setString("Score: " + std::to_string(snake.GetScore()));
@@ -206,6 +221,7 @@ void Game::MoveSnake()
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 	{
+		snake.SetOutline(false);
 		if (snake.GetDirection() != Direction::Left)
 		{
 			snake.ChangeDirection(Direction::Right);
@@ -213,6 +229,8 @@ void Game::MoveSnake()
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 	{
+		snake.SetOutline(false);
+
 		if (snake.GetDirection() != Direction::Right)
 		{
 			snake.ChangeDirection(Direction::Left);
@@ -220,6 +238,8 @@ void Game::MoveSnake()
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 	{
+		snake.SetOutline(false);
+
 		if (snake.GetDirection() != Direction::Down)
 		{
 			snake.ChangeDirection(Direction::Up);
@@ -227,6 +247,8 @@ void Game::MoveSnake()
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
 	{
+		snake.SetOutline(false);
+
 		if (snake.GetDirection() != Direction::Up)
 		{
 			snake.ChangeDirection(Direction::Down);
