@@ -68,6 +68,9 @@ private:
 
 	sf::Clock GameClock;
 	int CountDown = 90;
+	
+	int randomSpawnX;
+	int randomSpawnY;
 
 
 	FileHandling HighScoreFile;

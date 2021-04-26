@@ -46,7 +46,10 @@ private:
 	sf::Texture CountDownTexture;
 
 	Window m_window;
+
 	Snake snake;
+
+
 	Apple apple;
 	std::vector<Apple>AllApples;
 	Battery battery;

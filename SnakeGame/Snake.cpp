@@ -7,17 +7,22 @@
 Snake::Snake()
 	:rectangle({snakeSegmentSize.x - 1,snakeSegmentSize.y - 1 }),GameOver("GameOver.wav"),HighScoreFile("HighScore")
 {
+	randomSpawnX = (rand()%(25-8+ 1) + 8)* 20;
+	randomSpawnY = (rand() % 25)* 20;
+
 	rectangle.setFillColor(sf::Color::Red);
 	//rectangle.setOutlineThickness(1);
 	//rectangle.setOutlineColor(sf::Color::White);
-	m_SegmentPos.emplace_back(SnakeSegment{ 160,20 });
-	m_SegmentPos.emplace_back(SnakeSegment{ 140,20 });
-	m_SegmentPos.emplace_back(SnakeSegment{ 120,20});
+	m_SegmentPos.emplace_back(SnakeSegment{ randomSpawnX,randomSpawnY });
+	m_SegmentPos.emplace_back(SnakeSegment{ randomSpawnX - 20, randomSpawnY });
+	m_SegmentPos.emplace_back(SnakeSegment{ randomSpawnX - 40,randomSpawnY});
 	
 	highScore = HighScoreFile.GetScore();
 
 	ElectricBox.setFillColor(sf::Color(0, 0, 255, 120));
 	ElectricBox.setSize(sf::Vector2f(20, 20));
+	std::cout << randomSpawnX << std::endl;
+	std::cout << randomSpawnY;
 }
 
 Snake::~Snake()
