@@ -42,11 +42,31 @@ Game::Game()
 
 	ScoreText.setFont(ScoreFont);
 	ScoreText.setCharacterSize(25);
-	ScoreText.setPosition(sf::Vector2f(2, 10));
+	ScoreText.setPosition(sf::Vector2f(2, 70));
+
+	AI1Score.setFont(ScoreFont);
+	AI1Score.setCharacterSize(25);
+	AI1Score.setPosition(sf::Vector2f(2, 120));
+
+	AI2Score.setFont(ScoreFont);
+	AI2Score.setCharacterSize(25);
+	AI2Score.setPosition(sf::Vector2f(2, 150));
+
+	AI3Score.setFont(ScoreFont);
+	AI3Score.setCharacterSize(25);
+	AI3Score.setPosition(sf::Vector2f(2, 180));
+
+	AI4Score.setFont(ScoreFont);
+	AI4Score.setCharacterSize(25);
+	AI4Score.setPosition(sf::Vector2f(2, 210));
+
+	AI5Score.setFont(ScoreFont);
+	AI5Score.setCharacterSize(25);
+	AI5Score.setPosition(sf::Vector2f(2, 240));
 
 	HighScoreText.setFont(ScoreFont);
 	HighScoreText.setCharacterSize(25);
-	HighScoreText.setPosition({ 2,70 });
+	HighScoreText.setPosition({ 2,10 });
 
 	Tips.setFont(ScoreFont);
 	Tips.setCharacterSize(25);
@@ -69,6 +89,13 @@ Game::Game()
 	AISnakes.emplace_back(AI4);
 	AISnakes.emplace_back(AI5);
 
+	snake.SetName("Player");
+	AI1->SetName("AI1");
+	AI2->SetName("AI2");
+	AI3->SetName("AI3");
+	AI4->SetName("AI4");
+	AI5->SetName("AI5");
+
 	
 
 	snake.SetOutline(true);
@@ -90,72 +117,114 @@ void Game::Update()
 {
 	m_window.Update();
 
-	snake.Update();
-
-
-	for (auto& i : AISnakes)
+	if (GameIsFinished == false)
 	{
-		if (i->getIsDead() == false)
+
+		snake.Update();
+
+		for (auto& i : AISnakes)
 		{
-			GetClosestApple(sf::Vector2f(i->GetSegments().front().x, AISnakes[0]->GetSegments().front().y), AllApples);
-			i->Update();
-			MoveAI(i);
+			if (i->getIsDead() == false)
+			{
+				GetClosestApple(sf::Vector2f(i->GetSegments().front().x, AISnakes[0]->GetSegments().front().y), AllApples);
+				i->Update();
+				MoveAI(i);
+			}
 		}
+		CheckAllSnakeCollision();
+
+		SnakeEats();
+
+		for (auto& i : AllApples)
+		{
+			i.Update();
+		}
+
+		battery.Update();
+
+		bool isOneSnakeAlive = false;
+		for (auto& i : AISnakes)
+		{
+			if (i->getIsDead() == false) 
+			{ 
+				isOneSnakeAlive = true; 
+				break;
+			}
+		}
+
+		if (isOneSnakeAlive == false && snake.getIsDead() == true)
+			GameIsFinished = true;
 	}
-	CheckAllSnakeCollision();
-
-	SnakeEats();
-
-	for (auto& i: AllApples)
-	{
-		i.Update();
-	}
-
-	battery.Update();
-	
-
+	else
+		FindWinner();
 	
 }
 
 void Game::Render()
 {
 	m_window.BeginDraw();  //CLEAR
-	GameBackground.Render(m_window);
-	//DRAW GRID
-	DrawGrid();
 
-	for (auto& i : AllApples)
-	{
-		i.Render(m_window);
+	if (GameIsFinished == false)
+{
+
+		GameBackground.Render(m_window);
+		//DRAW GRID
+		DrawGrid();
+
+		for (auto& i : AllApples)
+		{
+			i.Render(m_window);
+		}
+
+		if (BatteryClock.getElapsedTime().asSeconds() >= 10)
+		{
+			battery.Render(m_window);
+			SpawnBattery = true;
+		}
+		if (snake.getIsDead() == false)
+			snake.Render(m_window);
+
+
+		for (auto& i : AISnakes)
+		{
+			if (i->getIsDead() == false)
+					i->Render(m_window);
+		}
+
+
+		HighScoreText.setString("HighScore: \n" + std::to_string(snake.GetHighScore()));
+		ScoreText.setString("Player: " + std::to_string(snake.GetScore()));
+		AI1Score.setString("AI1: " + std::to_string(AI1->GetScore()));
+		AI2Score.setString("AI2: " + std::to_string(AI2->GetScore()));
+		AI3Score.setString("AI3: " + std::to_string(AI3->GetScore()));
+		AI4Score.setString("AI4: " + std::to_string(AI4->GetScore()));
+		AI5Score.setString("AI5: " + std::to_string(AI5->GetScore()));
+
+		CheckHighScore(snake.GetScore());
+		CountDownText.setString( std::to_string(snake.GetCountDown()));
+
+		m_window.Draw(CountDownCircle);
+		m_window.Draw(CountDownText);
+		m_window.Draw(HighScoreText);
+		m_window.Draw(ScoreText);
+
+		m_window.Draw(AI1Score);
+		m_window.Draw(AI2Score);
+		m_window.Draw(AI3Score);
+		m_window.Draw(AI4Score);
+		m_window.Draw(AI5Score);
+
+		m_window.Draw(Tips);
+
 	}
-
-	if (BatteryClock.getElapsedTime().asSeconds() >= 10)
+	else if (GameIsFinished == true)
 	{
-		battery.Render(m_window);
-		SpawnBattery = true;
+		GameOverScreen();
 	}
-	if (snake.getIsDead() == false)
-		snake.Render(m_window);
+		m_window.EndDraw();
 
 
-	for (auto& i : AISnakes)
-	{
-		if (i->getIsDead() == false)
-				i->Render(m_window);
-	}
 
-
-	HighScoreText.setString("HighScore: \n" + std::to_string(snake.GetHighScore()));
-	ScoreText.setString("Score: " + std::to_string(snake.GetScore()));
-	CheckHighScore(snake.GetScore());
-	CountDownText.setString( std::to_string(snake.GetCountDown()));
-
-	m_window.Draw(CountDownCircle);
-	m_window.Draw(CountDownText);
-	m_window.Draw(HighScoreText);
-	m_window.Draw(ScoreText);
-	m_window.Draw(Tips);
-	m_window.EndDraw();
 }
 
 Window* Game::GetWindow()
@@ -543,6 +612,132 @@ bool Game::CheckAllDead()
 		}
 		else
 			return false;
+	}
+}
+
+void Game::GameOverScreen()
+{
+	
+		sf::RectangleShape EndMenuBox;
+		EndMenuBox.setSize({ 200,400 });
+		EndMenuBox.setOutlineThickness(2);
+		EndMenuBox.setOutlineColor(sf::Color::White);
+		EndMenuBox.setFillColor(sf::Color::Blue);
+		EndMenuBox.setPosition(300, 100);
+
+		GameOverText.setFont(ScoreFont);
+		GameOverText.setCharacterSize(30);
+		GameOverText.setPosition(340, 110);
+		GameOverText.setColor(sf::Color::Black);
+		GameOverText.setOutlineThickness(1);
+		GameOverText.setOutlineColor(sf::Color::White);
+		GameOverText.setString("Game Over!");
+
+		WinnerText.setFont(ScoreFont);
+		WinnerText.setCharacterSize(30);
+		WinnerText.setPosition(355, 165);
+		WinnerText.setColor(sf::Color::Black);
+		WinnerText.setString("Winner:");
+
+		WinningPlayer.setFont(ScoreFont);
+		WinningPlayer.setCharacterSize(50);
+		WinningPlayer.setPosition(330, 220);
+		WinningPlayer.setColor(sf::Color::Red);
+		WinningPlayer.setOutlineThickness(1);
+		WinningPlayer.setOutlineColor(sf::Color::White);
+		//WinningPlayer.setString("Player");
+
+		RestartButton.setSize({ 100,50 });
+		RestartButton.setPosition({ 350,340 });
+		RestartButton.setFillColor(sf::Color::Black);
+
+		QuitButton.setSize({ 100,50 });
+		QuitButton.setPosition({ 350,400 });
+		QuitButton.setFillColor(sf::Color::Black);
+
+
+		PlayAgainText.setFont(ScoreFont);
+		PlayAgainText.setCharacterSize(35);
+		PlayAgainText.setPosition(350, 340);
+		PlayAgainText.setColor(sf::Color::Red);
+		PlayAgainText.setOutlineThickness(1);
+		PlayAgainText.setOutlineColor(sf::Color::White);
+		PlayAgainText.setString("Restart");
+		
+
+		QuitText.setFont(ScoreFont);
+		QuitText.setCharacterSize(35);
+		QuitText.setPosition(370, 405);
+		QuitText.setColor(sf::Color::Red);
+		QuitText.setOutlineThickness(1);
+		QuitText.setOutlineColor(sf::Color::White);
+		QuitText.setString("Quit");
+
+		if (GetWindow()->getMouseLocation().x > RestartButton.getPosition().x && GetWindow()->getMouseLocation().x < RestartButton.getPosition().x + RestartButton.getSize().x &&
+			GetWindow()->getMouseLocation().y > RestartButton.getPosition().y && GetWindow()->getMouseLocation().y < RestartButton.getPosition().y + RestartButton.getSize().y)
+		{
+			RestartButton.setOutlineThickness(2);
+			RestartButton.setOutlineColor(sf::Color::White);
+
+			if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+			{
+				GameIsFinished = false;
+				RespawnAll();
+				return;
+			}
+		}
+		else
+			RestartButton.setOutlineThickness(0);
+
+		if (GetWindow()->getMouseLocation().x > QuitButton.getPosition().x && GetWindow()->getMouseLocation().x < QuitButton.getPosition().x + QuitButton.getSize().x &&
+			GetWindow()->getMouseLocation().y > QuitButton.getPosition().y && GetWindow()->getMouseLocation().y < QuitButton.getPosition().y + QuitButton.getSize().y)
+		{
+			QuitButton.setOutlineThickness(2);
+			QuitButton.setOutlineColor(sf::Color::White);
+
+			if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+			{
+				m_window.SetIsDone(true);
+			}
+		}
+		else
+			QuitButton.setOutlineThickness(0);
+
+		m_window.Draw(EndMenuBox);
+		m_window.Draw(GameOverText);
+		m_window.Draw(WinnerText);
+		m_window.Draw(WinningPlayer);
+		m_window.Draw(RestartButton);
+		m_window.Draw(QuitButton);
+		m_window.Draw(PlayAgainText);
+		m_window.Draw(QuitText);
+
+}
+
+void Game::FindWinner()
+{
+	if (snake.GetScore() > TopScore)
+	{
+		TopScore = snake.GetScore();
+		WinningPlayer.setString(snake.GetName() + "\n" + "Score " + std::to_string(snake.GetScore()));
+
+	}
+	for (auto& i : AISnakes)
+	{
+		if (i->GetScore() > TopScore)
+		{
+			TopScore = i->GetScore();
+			WinningPlayer.setString("   " + i->GetName() + "\n" + "Score " + std::to_string(i->GetScore()));
+		}
+	}
+
+}
+
+void Game::SetAllDirection()
+{
+	for (auto& i : AISnakes)
+	{
+		i->SetAutoDirection();
 	}
 }
 

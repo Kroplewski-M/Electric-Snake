@@ -21,6 +21,8 @@
 
 	ElectricBox.setFillColor(sf::Color(0, 0, 255, 120));
 	ElectricBox.setSize(sf::Vector2f(20, 20));
+
+	SetAutoDirection();
 }
 
 Snake::~Snake()
@@ -195,17 +197,27 @@ bool Snake::getIsDead()
 
 void Snake::Respawn()
 {
-	if (isDead == true)
-	{
-		m_SegmentPos.emplace_back(SnakeSegment{ randomSpawnX,randomSpawnY });
-		m_SegmentPos.emplace_back(SnakeSegment{ randomSpawnX - 20, randomSpawnY });
+		m_SegmentPos.clear();
+
+		randomSpawnX = (rand()%(25-8+ 1) + 8)* 20;
+		randomSpawnY = (rand() % 25)* 20;
+
+		 headPos = sf::Vector2i(randomSpawnX,randomSpawnY) ;
+		 subHeadPos = sf::Vector2i(randomSpawnX-20,randomSpawnY);
+
+
+		m_SegmentPos.emplace_back(SnakeSegment{headPos.x,headPos.y});
+		m_SegmentPos.emplace_back(SnakeSegment{ subHeadPos.x,  subHeadPos.y});
 		m_SegmentPos.emplace_back(SnakeSegment{ randomSpawnX - 40,randomSpawnY });
-		m_direction = Direction::none;
+
+		SetAutoDirection();
+
+
+		m_direction = Direction::Right;
 		m_direction_queue = Direction::none;
 		isDead = false;
 		CountDown = 90;
 		//SetOutline(true);
-	}
 }
 
 int Snake::GetScore()
@@ -319,5 +331,39 @@ void Snake::SetOutline(bool x)
 bool Snake::GetIsElectified()
 {
 	return IsElectrified;
+}
+
+void Snake::SetName(std::string name)
+{
+	Name = name;
+}
+
+std::string Snake::GetName()
+{
+	return Name;
+}
+
+void Snake::SetAutoDirection()
+{
+	//if head is above sub seg then go up
+	if (headPos.y < subHeadPos.y)
+	{
+		m_direction = Direction::Up;
+	}
+	//if head is below sub then do down
+	else if (headPos.y > subHeadPos.y)
+	{
+		m_direction = Direction::Down;
+	}
+	//if head is to the left of the sub then go left
+	else if (headPos.x < subHeadPos.x)
+	{
+		m_direction = Direction::Left;
+	}
+	//if the head if to the right of the sub then to right
+	else if (headPos.x > subHeadPos.x)
+	{
+		m_direction = Direction::Right;
+	}
 }
 

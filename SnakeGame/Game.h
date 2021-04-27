@@ -35,12 +35,23 @@ public:
 	void CheckAllSnakeCollision();
 	void RespawnAll();
 	bool CheckAllDead();
+	void GameOverScreen();
+	void FindWinner();
+	void SetAllDirection();
+
 private:
 
 	sf::Font ScoreFont;
 	sf::Text ScoreText;
 	sf::Text HighScoreText;
 	sf::Text Tips;
+
+	sf::Text AI1Score;
+	sf::Text AI2Score;
+	sf::Text AI3Score;
+	sf::Text AI4Score;
+	sf::Text AI5Score;
+
 
 	bool SpawnBattery = false;
 	int once = 0;
@@ -74,6 +85,18 @@ private:
 	Sound SnakeElectrifiedSound;
 	sf::Texture AppleTex;
 	sf::Texture BatteryTex;
+
+	sf::Text GameOverText;
+	sf::Text WinnerText;
+	sf::Text WinningPlayer;
+	sf::Text PlayAgainText;
+	sf::Text QuitText;
+	sf::RectangleShape RestartButton;
+	sf::RectangleShape QuitButton;
 	
+	int TopScore = 0;
+	std::string Winner;
+
+	bool GameIsFinished = false;
 };
 

@@ -55,6 +55,8 @@ void Scenemanager::ChangeScene()
 			if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 			{
 				myStates = GameStates::Game;
+				game.RespawnAll();
+				game.SetAllDirection();
 			}
 
 		}

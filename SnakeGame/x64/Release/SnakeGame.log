@@ -1,34 +1,73 @@
-﻿  Game.cpp
-C:\Users\user\source\repos\Snake\SnakeGame\MainMenu.h(4,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-C:\Users\user\source\repos\Snake\SnakeGame\Game.cpp(57,15): warning C4996: 'sf::Text::setColor': was declared deprecated
-C:\Users\user\source\repos\Snake\SnakeGame\Game.cpp(91,103): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+﻿  Snake.cpp
+C:\Users\user\source\repos\Snake\SnakeGame\Snake.cpp(82,59): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\user\source\repos\Snake\SnakeGame\Snake.cpp(94,13): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\user\source\repos\Snake\SnakeGame\Snake.cpp(118,72): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\user\source\repos\Snake\SnakeGame\Game.cpp(91,65): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\user\source\repos\Snake\SnakeGame\Snake.cpp(118,53): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\user\source\repos\Snake\SnakeGame\Game.cpp(166,32): warning C4244: 'argument': conversion from 'const int' to 'T', possible loss of data
+C:\Users\user\source\repos\Snake\SnakeGame\Snake.cpp(205,40): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\user\source\repos\Snake\SnakeGame\Game.cpp(166,24): warning C4244: 'argument': conversion from 'const int' to 'T', possible loss of data
+C:\Users\user\source\repos\Snake\SnakeGame\Snake.cpp(205,27): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\user\source\repos\Snake\SnakeGame\Game.cpp(176,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\user\source\repos\Snake\SnakeGame\Game.cpp(177,35): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\user\source\repos\Snake\SnakeGame\Game.cpp(187,15): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\user\source\repos\Snake\SnakeGame\Game.cpp(188,34): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\user\source\repos\Snake\SnakeGame\Game.cpp(363,14): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-  Generating code
-  3 of 523 functions ( 0.6%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    7 functions had inline decision re-evaluated but remain unchanged
-  Finished generating code
-  SnakeGame.vcxproj -> C:\Users\user\source\repos\Snake\x64\Release\SnakeGame.exe
+C:\Users\user\source\repos\Snake\SnakeGame\Snake.cpp(206,46): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\user\source\repos\Snake\SnakeGame\Snake.cpp(206,42): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\user\source\repos\Snake\SnakeGame\Snake.cpp(209,50): error C2397: conversion from 'T' to 'int' requires a narrowing conversion
+          with
+          [
+              T=float
+          ]
+C:\Users\user\source\repos\Snake\SnakeGame\Snake.cpp(209,50): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\user\source\repos\Snake\SnakeGame\Snake.cpp(209,60): error C2397: conversion from 'T' to 'int' requires a narrowing conversion
+          with
+          [
+              T=float
+          ]
+C:\Users\user\source\repos\Snake\SnakeGame\Snake.cpp(209,60): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\user\source\repos\Snake\SnakeGame\Snake.cpp(210,53): error C2397: conversion from 'T' to 'int' requires a narrowing conversion
+          with
+          [
+              T=float
+          ]
+C:\Users\user\source\repos\Snake\SnakeGame\Snake.cpp(210,53): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\user\source\repos\Snake\SnakeGame\Snake.cpp(210,68): error C2397: conversion from 'T' to 'int' requires a narrowing conversion
+          with
+          [
+              T=float
+          ]
+C:\Users\user\source\repos\Snake\SnakeGame\Snake.cpp(210,68): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]

@@ -47,6 +47,9 @@ public:
 	Direction GetDirection();
 	void SetOutline(bool x);
 	bool GetIsElectified();
+	void SetName(std::string name);
+	std::string GetName();
+	void SetAutoDirection();
 
 private:
 	sf::Clock ElectrifiedClock;
@@ -64,7 +67,6 @@ private:
 	Direction m_direction{ Direction::Right };
 	Direction m_direction_queue{ Direction::none };
 	Sound GameOver;
-
 	sf::Texture* snakeBodyRight = new sf::Texture;
 	sf::Texture* snakeTailRight = new sf::Texture;
 	sf::Texture* snakeHeadRight = new sf::Texture;
@@ -75,8 +77,13 @@ private:
 	int randomSpawnX;
 	int randomSpawnY;
 
+	std::string Name;
 
 	FileHandling HighScoreFile;
+
+	sf::Vector2i headPos;
+	sf::Vector2i subHeadPos;
+
 };
 
 
