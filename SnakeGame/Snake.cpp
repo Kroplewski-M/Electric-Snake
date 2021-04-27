@@ -13,9 +13,9 @@
 	rectangle.setFillColor(GetRandomColor());
 	//rectangle.setOutlineThickness(1);
 	//rectangle.setOutlineColor(sf::Color::White);
-	m_SegmentPos.emplace_back(SnakeSegment{ randomSpawnX,randomSpawnY });
-	m_SegmentPos.emplace_back(SnakeSegment{ randomSpawnX - 20, randomSpawnY });
-	m_SegmentPos.emplace_back(SnakeSegment{ randomSpawnX - 40,randomSpawnY});
+	m_SegmentPos.push_back(SnakeSegment{ randomSpawnX,randomSpawnY });
+	m_SegmentPos.push_back(SnakeSegment{ randomSpawnX - 20, randomSpawnY });
+	m_SegmentPos.push_back(SnakeSegment{ randomSpawnX - 40,randomSpawnY});
 	
 	highScore = HighScoreFile.GetScore();
 
@@ -155,12 +155,12 @@ void Snake::ChangeDirection(Direction newDirection)
 void Snake::Dead()
 {
 	isDead = true;
-	GameOver.PlaySound();
+	//GameOver.PlaySound();
 	IsElectrified = false;
-	score = 0;
-	std::this_thread::sleep_for(std::chrono::seconds(3));
-	m_SegmentPos.clear();	
-	Respawn();
+	//score = 0;
+	//std::this_thread::sleep_for(std::chrono::seconds(3));
+	//m_SegmentPos.clear();	
+	//Respawn();
 }
 
 bool Snake::CheckCollision()
@@ -197,9 +197,9 @@ void Snake::Respawn()
 {
 	if (isDead == true)
 	{
-		m_SegmentPos.emplace_back(SnakeSegment{ 160,20 });
-		m_SegmentPos.emplace_back(SnakeSegment{ 140,20 });
-		m_SegmentPos.emplace_back(SnakeSegment{ 120,20 });
+		m_SegmentPos.emplace_back(SnakeSegment{ randomSpawnX,randomSpawnY });
+		m_SegmentPos.emplace_back(SnakeSegment{ randomSpawnX - 20, randomSpawnY });
+		m_SegmentPos.emplace_back(SnakeSegment{ randomSpawnX - 40,randomSpawnY });
 		m_direction = Direction::none;
 		m_direction_queue = Direction::none;
 		isDead = false;

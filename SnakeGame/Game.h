@@ -1,6 +1,7 @@
 #pragma once
 #include "window.h"
 #include <vector>
+#include <cmath>
 #include "Consumables.h"
 #include "Apple.h"
 #include "texture.h"
@@ -20,7 +21,7 @@ public:
 	void Update();
 	void Render();
 	Window* GetWindow();
-	bool ConsumableIsColliding(Snake& m_snake, const sf::Vector2f& pos_);
+	bool ConsumableIsColliding(Snake* m_snake, const sf::Vector2f& pos_);
 	sf::Vector2f SetAppleLocation();
 	sf::Vector2f SetBatteryLocation();
 	void SnakeEats();
@@ -29,6 +30,8 @@ public:
 	void CheckHighScore(int x);
 	void BatteryLocationTimer();
 	void SetAllAppleLocation();
+	void MoveAI(AISnake* AI);
+	sf::Vector2f GetClosestApple(sf::Vector2f AISnakeLoc, std::vector<Apple>&AllApples);
 private:
 
 	sf::Font ScoreFont;
@@ -53,6 +56,8 @@ private:
 	AISnake* AI3 = new AISnake;
 
 	std::vector<AISnake*>AISnakes;
+	sf::Vector2f* ClosestAppleLocation = new sf::Vector2f;
+	
 
 
 	Apple apple;

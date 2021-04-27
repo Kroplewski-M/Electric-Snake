@@ -12,12 +12,22 @@ AISnake::~AISnake()
 
 }
 
-void AISnake::Update()
+
+void AISnake::MoveSnake(Direction dir)
 {
 
-}
-
-void AISnake::MoveSnake()
-{
-
+	if (dir == Direction::Right)
+	{
+		ChangeDirection(Direction::Right);
+	}
+	if (dir == Direction::Left)
+	{
+		ChangeDirection(Direction::Left);
+	}if (dir == Direction::Up)
+	{
+		ChangeDirection(Direction::Up);
+	}if (dir == Direction::Down)
+	{
+		ChangeDirection(Direction::Down);
+	}
 }

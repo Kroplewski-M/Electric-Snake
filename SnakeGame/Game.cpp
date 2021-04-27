@@ -88,7 +88,24 @@ void Game::Update()
 	m_window.Update();
 
 	snake.Update();
-	
+
+
+	for (auto& i : AISnakes)
+	{
+		if (i->getIsDead() == false)
+		{
+			GetClosestApple(sf::Vector2f(i->GetSegments().front().x, AISnakes[0]->GetSegments().front().y), AllApples);
+			i->Update();
+			MoveAI(i);
+		}
+	}
+	/*if (snake.GetDirection() == Direction::none)
+	{
+		for (auto& i : AISnakes)
+		{
+			i->ChangeDirection(Direction::none);
+		}
+	}*/
 
 	SnakeEats();
 
@@ -110,7 +127,7 @@ void Game::Render()
 	//DRAW GRID
 	DrawGrid();
 
-	for (auto& i: AllApples)
+	for (auto& i : AllApples)
 	{
 		i.Render(m_window);
 	}
@@ -120,11 +137,14 @@ void Game::Render()
 		battery.Render(m_window);
 		SpawnBattery = true;
 	}
-	snake.Render(m_window);
+	if (snake.getIsDead() == false)
+		snake.Render(m_window);
+
 
 	for (auto& i : AISnakes)
 	{
-		i->Render(m_window);
+		if (i->getIsDead() == false)
+				i->Render(m_window);
 	}
 
 
@@ -146,9 +166,10 @@ Window* Game::GetWindow()
 	return &m_window;
 }
 
-bool Game::ConsumableIsColliding(Snake& m_snake, const sf::Vector2f& pos_)
+bool Game::ConsumableIsColliding(Snake* m_snake, const sf::Vector2f& pos_)
 {
-	for (const SnakeSegment& seg_ : m_snake.GetSegments())
+	
+	for (const SnakeSegment& seg_ : m_snake->GetSegments())
 	{
 		if (sf::Vector2f(seg_.x, seg_.y) == pos_)
 			return true;
@@ -162,7 +183,17 @@ sf::Vector2f Game::SetAppleLocation()
 		do {
 			randX = 120 + (((rand() % 601) % 20) * 20);
 			randY = (((rand() % 601) % 20) * 20);
-		} while (ConsumableIsColliding(snake, sf::Vector2f(randX, randY)));
+		} while (ConsumableIsColliding(&snake, sf::Vector2f(randX, randY)));
+
+		for (const auto& AIsna : AISnakes)
+		{
+			do {
+				randX = 120 + (((rand() % 601) % 20) * 20);
+				randY = (((rand() % 601) % 20) * 20);
+			} while (ConsumableIsColliding(AIsna, sf::Vector2f(randX, randY)));
+		}
+
+
 		apple.SetSpawnLocation({ randX, randY });
 
 	return apple.GetLocation();
@@ -173,13 +204,14 @@ sf::Vector2f Game::SetBatteryLocation()
 	do {
 		randX = 120 + (((rand() % 601) % 20) * 20);
 		randY = (((rand() % 601) % 20) * 20);
-	} while (ConsumableIsColliding(snake, sf::Vector2f(randX, randY)));
+	} while (ConsumableIsColliding(&snake, sf::Vector2f(randX, randY)));
 	battery.SetSpawnLocation({ randX, randY });
 
 	return battery.GetLocation();
 }
 void Game::SnakeEats()
 {
+
 	if (BatteryClock.getElapsedTime().asSeconds() >= 10 && once == 0)
 	{
 		battery.SetSpawnLocation(SetBatteryLocation());
@@ -190,7 +222,7 @@ void Game::SnakeEats()
 	{
 		for (auto& i: AllApples)
 		{
-			if (snake.GetSegments().front().x == i.GetLocation().x && snake.GetSegments().front().y == i.GetLocation().y)
+			if (snake.GetSegments().front().x == i.GetLocation().x && snake.GetSegments().front().y == i.GetLocation().y )
 			{
 				SnakeEatSound.PlaySound();
 				snake.Grow();
@@ -203,6 +235,21 @@ void Game::SnakeEats()
 			SnakeElectrifiedSound.PlaySound();
 			snake.Grow();
 			snake.SetIsElectrified(true);
+		}
+	}
+	for (auto& x : AISnakes)
+	{
+		if (x->getIsDead() == false)
+		{
+			for (auto& i : AllApples)
+			{
+				if (x->GetSegments().front().x == i.GetLocation().x && x->GetSegments().front().y == i.GetLocation().y)
+				{
+					SnakeEatSound.PlaySound();
+					x->Grow();
+					i.SetSpawnLocation(SetAppleLocation());
+				}
+			}
 		}
 	}
 }
@@ -280,5 +327,90 @@ void Game::SetAllAppleLocation()
 	{
 		i.SetSpawnLocation(SetAppleLocation());
 	}
+}
+
+void Game::MoveAI(AISnake* AI)
+{
+	if (AI->GetSegments()[0].x > ClosestAppleLocation->x)
+	{
+		if (AI->GetDirection() != Direction::Right)
+			AI->ChangeDirection(Direction::Left);
+	}
+
+	else if (AI->GetSegments()[0].x < ClosestAppleLocation->x)
+	{
+		if (AI->GetDirection() != Direction::Left)
+			AI->ChangeDirection(Direction::Right);
+	}
+
+	else if (AI->GetSegments()[0].y < ClosestAppleLocation->y)
+	{
+		if (AI->GetDirection() != Direction::Up)
+			AI->ChangeDirection(Direction::Down);
+	}
+
+	else if (AI->GetSegments()[0].y > ClosestAppleLocation->y)
+	{
+		if (AI->GetDirection() != Direction::Down)
+			AI->ChangeDirection(Direction::Up);
+	}
+
+	if (AI->GetSegments()[0].y + 20 == 600)
+	{
+		if (AI->GetDirection() == Direction::Down)
+		{
+			AI->ChangeDirection(Direction::Right);
+		}
+	}
+	else if (AI->GetSegments()[0].y - 20 == 0)
+	{
+		if (AI->GetDirection() == Direction::Up)
+		{
+			AI->ChangeDirection(Direction::Right);
+		}
+	}
+	else if (AI->GetSegments()[0].x + 20 == 600)
+	{
+		if (AI->GetDirection() == Direction::Right)
+		{
+			AI->ChangeDirection(Direction::Down);
+		}
+	}
+	else if (AI->GetSegments()[0].x + 20 == 600)
+	{
+		if (AI->GetDirection() == Direction::Right)
+		{
+			AI->ChangeDirection(Direction::Up);
+		}
+	}
+	else if (AI->GetSegments()[0].x - 20 == 120)
+	{
+		if (AI->GetDirection() == Direction::Left)
+		{
+			AI->ChangeDirection(Direction::Up);
+		}
+	}
+}
+
+sf::Vector2f Game::GetClosestApple(sf::Vector2f AISnakeLoc, std::vector<Apple>& AllApples)
+{
+	int distance = 10000;
+	//CHECK FOR CLOSEST APPLE
+	for (auto& i : AllApples)
+	{
+		int newDis = sqrt(pow(i.GetLocation().x - AISnakeLoc.x, 2) + pow(i.GetLocation().y - AISnakeLoc.y, 2));
+		if (newDis < distance)
+		{
+			if (i.GetIsAlive() == true)
+			{
+				distance = 10000;
+				*ClosestAppleLocation = i.GetLocation();
+			}
+		}
+		
+
+	}
+	
+	return *ClosestAppleLocation;
 }
 

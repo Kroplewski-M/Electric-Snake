@@ -8,8 +8,7 @@ class AISnake : public Snake
 public:
 	AISnake();
 	~AISnake();
-	void Update();
-	void MoveSnake();
+	void MoveSnake(Direction dir);
 
 };
 
