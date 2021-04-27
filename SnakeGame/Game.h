@@ -32,6 +32,9 @@ public:
 	void SetAllAppleLocation();
 	void MoveAI(AISnake* AI);
 	sf::Vector2f GetClosestApple(sf::Vector2f AISnakeLoc, std::vector<Apple>&AllApples);
+	void CheckAllSnakeCollision();
+	void RespawnAll();
+	bool CheckAllDead();
 private:
 
 	sf::Font ScoreFont;
@@ -54,6 +57,9 @@ private:
 	AISnake* AI1 = new AISnake;
 	AISnake* AI2 = new AISnake;
 	AISnake* AI3 = new AISnake;
+	AISnake* AI4 = new AISnake;
+	AISnake* AI5 = new AISnake;
+
 
 	std::vector<AISnake*>AISnakes;
 	sf::Vector2f* ClosestAppleLocation = new sf::Vector2f;

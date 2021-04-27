@@ -66,6 +66,9 @@ Game::Game()
 	AISnakes.emplace_back(AI1);
 	AISnakes.emplace_back(AI2);
 	AISnakes.emplace_back(AI3);
+	AISnakes.emplace_back(AI4);
+	AISnakes.emplace_back(AI5);
+
 	
 
 	snake.SetOutline(true);
@@ -99,13 +102,7 @@ void Game::Update()
 			MoveAI(i);
 		}
 	}
-	/*if (snake.GetDirection() == Direction::none)
-	{
-		for (auto& i : AISnakes)
-		{
-			i->ChangeDirection(Direction::none);
-		}
-	}*/
+	CheckAllSnakeCollision();
 
 	SnakeEats();
 
@@ -390,6 +387,44 @@ void Game::MoveAI(AISnake* AI)
 			AI->ChangeDirection(Direction::Up);
 		}
 	}
+
+	for (auto& i : AISnakes)
+	{
+		for (auto& j : AISnakes)
+		{
+			if (j != i)
+			{
+				if (i->GetSegments()[0].x + 20 == j->GetSegments()[0].x)
+				{
+					if (i->GetDirection() == Direction::Right)
+					{
+						i->ChangeDirection(Direction::Up);
+					}
+				}
+				else if(i->GetSegments()[0].x - 20 == j->GetSegments()[0].x)
+				{
+					if (i->GetDirection() == Direction::Left)
+					{
+						i->ChangeDirection(Direction::Up);
+					}
+				}
+				else if (i->GetSegments()[0].y - 20 == j->GetSegments()[0].y)
+				{
+					if (i->GetDirection() == Direction::Up)
+					{
+						i->ChangeDirection(Direction::Right);
+					}
+				}
+				else if (i->GetSegments()[0].y + 20 == j->GetSegments()[0].y)
+				{
+					if (i->GetDirection() == Direction::Down)
+					{
+						i->ChangeDirection(Direction::Right);
+					}
+				}
+			}
+		}
+	}
 }
 
 sf::Vector2f Game::GetClosestApple(sf::Vector2f AISnakeLoc, std::vector<Apple>& AllApples)
@@ -412,5 +447,102 @@ sf::Vector2f Game::GetClosestApple(sf::Vector2f AISnakeLoc, std::vector<Apple>& 
 	}
 	
 	return *ClosestAppleLocation;
+}
+
+void Game::CheckAllSnakeCollision()
+{
+	for (auto& i : AISnakes)
+	{
+		if (i->getIsDead() == false)
+		{
+			
+			if (snake.GetSegments().front().x == i->GetSegments()[0].x && snake.GetSegments().front().y == i->GetSegments()[0].y)
+			{
+				if (snake.GetIsElectified() == true)
+				{
+					i->Dead();
+				}
+				else
+				{
+					snake.Dead();
+					i->Dead();
+				}
+			}
+			for (auto& j : AISnakes)
+			{
+				if (j->getIsDead() == false)
+				{
+					if (j != i)
+					{
+						if (j->GetSegments()[0].x == i->GetSegments()[0].x && j->GetSegments()[0].y == i->GetSegments()[0].y)
+						{
+							j->Dead();
+							i->Dead();
+						}
+					}
+				}
+			}
+			for (auto& h : i->GetSegments())
+			{
+				if (snake.GetSegments().front().x == h.x && snake.GetSegments().front().y == h.y)
+				{
+					if (snake.GetIsElectified() == true)
+					{
+						i->Dead();
+					}
+					else
+						snake.Dead();
+				}
+				for (auto& j : AISnakes)
+				{
+					if (j->getIsDead() == false)
+					{
+						if (j != i)
+						{
+							if (j->GetSegments()[0].x == h.x && j->GetSegments()[0].y == h.y)
+							{
+								j->Dead();
+							}
+						}
+					}
+				}
+			}
+			if (snake.getIsDead() == false)
+			{
+				for (auto& k : snake.GetSegments())
+				{
+					if (i->GetSegments()[0].x == k.x && i->GetSegments()[0].y == k.y)
+					{
+						i->Dead();
+					}
+				}
+			}
+		}
+
+	}
+	
+
+}
+
+void Game::RespawnAll()
+{
+	snake.Respawn();
+	for (auto& i : AISnakes)
+	{
+		i->Respawn();
+	}
+}
+
+bool Game::CheckAllDead()
+{
+	for (auto& i : AISnakes)
+	{
+		if (snake.getIsDead() == true && i->getIsDead() == true)
+		{
+			return true;
+		}
+		else
+			return false;
+	}
 }
 

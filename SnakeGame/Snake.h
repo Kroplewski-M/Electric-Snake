@@ -46,6 +46,7 @@ public:
 	std::vector<SnakeSegment> GetSegments();
 	Direction GetDirection();
 	void SetOutline(bool x);
+	bool GetIsElectified();
 
 private:
 	sf::Clock ElectrifiedClock;

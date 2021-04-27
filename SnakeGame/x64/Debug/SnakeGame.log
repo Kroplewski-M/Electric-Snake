@@ -1,31 +1,63 @@
-﻿  Game.cpp
+﻿  AISnake.cpp
+  Consumables.cpp
+C:\Users\user\source\repos\Snake\SnakeGame\Consumables.cpp(50,14): warning C4804: '-': unsafe use of type 'bool' in operation
+  Game.cpp
 C:\Users\user\source\repos\Snake\SnakeGame\MainMenu.h(4,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 C:\Users\user\source\repos\Snake\SnakeGame\Game.cpp(57,15): warning C4996: 'sf::Text::setColor': was declared deprecated
-C:\Users\user\source\repos\Snake\SnakeGame\Game.cpp(97,95): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\user\source\repos\Snake\SnakeGame\Game.cpp(100,95): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\user\source\repos\Snake\SnakeGame\Game.cpp(97,57): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\user\source\repos\Snake\SnakeGame\Game.cpp(100,57): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\user\source\repos\Snake\SnakeGame\Game.cpp(174,32): warning C4244: 'argument': conversion from 'const int' to 'T', possible loss of data
+C:\Users\user\source\repos\Snake\SnakeGame\Game.cpp(171,32): warning C4244: 'argument': conversion from 'const int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\user\source\repos\Snake\SnakeGame\Game.cpp(174,24): warning C4244: 'argument': conversion from 'const int' to 'T', possible loss of data
+C:\Users\user\source\repos\Snake\SnakeGame\Game.cpp(171,24): warning C4244: 'argument': conversion from 'const int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\user\source\repos\Snake\SnakeGame\Game.cpp(184,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\user\source\repos\Snake\SnakeGame\Game.cpp(185,35): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\user\source\repos\Snake\SnakeGame\Game.cpp(191,17): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\user\source\repos\Snake\SnakeGame\Game.cpp(192,36): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\user\source\repos\Snake\SnakeGame\Game.cpp(205,15): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\user\source\repos\Snake\SnakeGame\Game.cpp(206,34): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\user\source\repos\Snake\SnakeGame\Game.cpp(401,14): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\user\source\repos\Snake\SnakeGame\Game.cpp(181,16): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\user\source\repos\Snake\SnakeGame\Game.cpp(182,35): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\user\source\repos\Snake\SnakeGame\Game.cpp(188,17): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\user\source\repos\Snake\SnakeGame\Game.cpp(189,36): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\user\source\repos\Snake\SnakeGame\Game.cpp(202,15): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\user\source\repos\Snake\SnakeGame\Game.cpp(203,34): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\user\source\repos\Snake\SnakeGame\Game.cpp(436,14): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  Main.cpp
+C:\Users\user\source\repos\Snake\SnakeGame\MainMenu.h(4,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\user\source\repos\Snake\SnakeGame\Scenemanager.h(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\user\source\repos\Snake\SnakeGame\Main.cpp(8,13): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  MainMenu.cpp
+C:\Users\user\source\repos\Snake\SnakeGame\MainMenu.h(4,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\user\source\repos\Snake\SnakeGame\MainMenu.cpp(10,55): warning C4390: ';': empty controlled statement found; is this the intent?
+C:\Users\user\source\repos\Snake\SnakeGame\MainMenu.cpp(28,7): warning C4996: 'sf::Text::setColor': was declared deprecated
+C:\Users\user\source\repos\Snake\SnakeGame\MainMenu.cpp(34,7): warning C4996: 'sf::Text::setColor': was declared deprecated
+C:\Users\user\source\repos\Snake\SnakeGame\MainMenu.cpp(41,6): warning C4996: 'sf::Text::setColor': was declared deprecated
+  Scenemanager.cpp
+C:\Users\user\source\repos\Snake\SnakeGame\MainMenu.h(4,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\user\source\repos\Snake\SnakeGame\Scenemanager.h(3,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  Snake.cpp
+C:\Users\user\source\repos\Snake\SnakeGame\Snake.cpp(80,59): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\user\source\repos\Snake\SnakeGame\Snake.cpp(92,13): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\user\source\repos\Snake\SnakeGame\Snake.cpp(116,72): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\user\source\repos\Snake\SnakeGame\Snake.cpp(116,53): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+  Generating Code...
+C:\Users\user\source\repos\Snake\SnakeGame\Snake.cpp(294): warning C4715: 'Snake::GetRandomColor': not all control paths return a value
+C:\Users\user\source\repos\Snake\SnakeGame\Game.cpp(547): warning C4715: 'Game::CheckAllDead': not all control paths return a value
   SnakeGame.vcxproj -> C:\Users\user\source\repos\Snake\x64\Debug\SnakeGame.exe

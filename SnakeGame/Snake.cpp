@@ -204,7 +204,7 @@ void Snake::Respawn()
 		m_direction_queue = Direction::none;
 		isDead = false;
 		CountDown = 90;
-		SetOutline(true);
+		//SetOutline(true);
 	}
 }
 
@@ -316,4 +316,8 @@ void Snake::SetOutline(bool x)
 	}
 }
 
+bool Snake::GetIsElectified()
+{
+	return IsElectrified;
+}
 
