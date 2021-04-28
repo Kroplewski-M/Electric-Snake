@@ -220,7 +220,7 @@ void Snake::Respawn()
 
 		SetAutoDirection();
 
-
+		score = 0;
 		m_direction = Direction::Right;
 		m_direction_queue = Direction::none;
 		isDead = false;
