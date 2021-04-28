@@ -3,6 +3,7 @@
 
 MainMenu::MainMenu()
 {
+	//LOADS NESSESSARY FILES 
 	if (!MainMenuFont.loadFromFile("MainMenuFont.otf"))
 	{
 	}
@@ -10,6 +11,7 @@ MainMenu::MainMenu()
 	if (!BackgoundText.loadFromFile("SnakeMainMenu.png"));
 	{
 	}
+	//SETS ALL BUTTONS AND TEXT
 	StartButton.setSize({100,50});
 	StartButton.setPosition({ 350,200 });
 	StartButton.setFillColor(sf::Color::Red);
@@ -52,7 +54,7 @@ MainMenu::~MainMenu()
 
 void MainMenu::Update(Game* game, Window* window)
 {
-
+	//HIGHLIGHTS BUTTON IF MOUSE IS OVER IT
 	if (game->GetWindow()->getMouseLocation().x > StartButton.getPosition().x && game->GetWindow()->getMouseLocation().x < StartButton.getPosition().x + StartButton.getSize().x &&
 		game->GetWindow()->getMouseLocation().y > StartButton.getPosition().y && game->GetWindow()->getMouseLocation().y < StartButton.getPosition().y + StartButton.getSize().y)
 	{
@@ -83,6 +85,7 @@ void MainMenu::Update(Game* game, Window* window)
 
 void MainMenu::Render(Window* window)
 {
+	//RENDER THE MAIN MENU
 	window->BeginDraw();
 	window->Draw(Backgound);
 	window->Draw(Title);

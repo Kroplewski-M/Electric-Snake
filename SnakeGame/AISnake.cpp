@@ -12,7 +12,7 @@ AISnake::~AISnake()
 
 }
 
-
+//---NOT USED IN GAME ---
 void AISnake::MoveSnake(Direction dir)
 {
 

@@ -7,6 +7,7 @@
  Snake::Snake()
 	:rectangle({snakeSegmentSize.x - 1,snakeSegmentSize.y - 1 }),GameOver("GameOver.wav"),HighScoreFile("HighScore")
 {
+	 //SETS A RANDOM POSITIION FOR THE SNAKE, DEFUALT SIZE IS 3
 	randomSpawnX = (rand()%(25-8+ 1) + 8)* 20;
 	randomSpawnY = (rand() % 25)* 20;
 
@@ -17,6 +18,7 @@
 	m_SegmentPos.push_back(SnakeSegment{ randomSpawnX - 20, randomSpawnY });
 	m_SegmentPos.push_back(SnakeSegment{ randomSpawnX - 40,randomSpawnY});
 	
+	//GETS THE HIGH SCRORE AT BEGGINING OF GAME
 	highScore = HighScoreFile.GetScore();
 
 	ElectricBox.setFillColor(sf::Color(0, 0, 255, 120));
@@ -27,6 +29,7 @@
 
 Snake::~Snake()
 {
+	//OVERRIDES HIGH SCRORE FILE IF PLAYER BEATS IT
 	if (highScore > HighScoreFile.GetScore())
 	{
 		HighScoreFile.OverRideScore(highScore);
@@ -41,11 +44,11 @@ void Snake::Update()
 		while (clock.getElapsedTime().asMilliseconds() < 120);
 		clock.restart();
 
-
+		//ADD MOVEMENT TO A MOVEMENT QUEUE
 		if (m_SegmentPos[0].x % 20 == 0 && m_SegmentPos[0].y % 20 == 0)
 			m_direction = m_direction_queue;
 
-
+		//MOVEMENT OF SNAKE
 		switch (m_direction)
 		{
 		case Direction::Up:
@@ -83,7 +86,7 @@ void Snake::Update()
 
 		if (IsElectrified == true)
 		{
-	
+			//STARTS TIMER FOR ELECTRIFIED
 			if (ElectrifiedClock.getElapsedTime().asSeconds() - TimeStamp >= 10)
 			{
 				IsElectrified = false;
@@ -91,28 +94,30 @@ void Snake::Update()
 		}
 
 
-		int timer = GameClock.getElapsedTime().asSeconds();
 
+	}
+		int timer = GameClock.getElapsedTime().asSeconds();
 		if (timer > 0)
 		{
 			CountDown--;
 			GameClock.restart();
 		}
+		//KILLS SNAKES IF TIMER IS = 0
 		if (CountDown <= 0)
 		{
 			Dead();
 		}
-	}
 }
 
 
 void Snake::Render(Window& window)
 {
+	//DRAWS ELECRIFIED GRID ROUND THE SNAKE
 	if (IsElectrified == true)
 	{
 		BecomeElectrified(window);
 	}
-
+	//RENDERS SNAKE SEGMENTS
 	for (int i = 0; i != m_SegmentPos.size(); i++)
 	{
 		rectangle.setPosition(sf::Vector2f(m_SegmentPos[i].x, m_SegmentPos[i].y));
@@ -125,7 +130,7 @@ void Snake::Render(Window& window)
 void Snake::Grow()
 {
 	score += 10;
-
+		//GROWS SEGMENT IN A LOCATION DEPENDING ON SNAKE LOCATION
 		if (m_direction == Direction::Up)
 		{
 			m_SegmentPos.emplace_back(SnakeSegment{ m_SegmentPos[0].x  ,m_SegmentPos[0].y + 20 });
@@ -156,6 +161,8 @@ void Snake::ChangeDirection(Direction newDirection)
 
 void Snake::Dead()
 {
+	//KILLS SNAKE
+
 	isDead = true;
 	//GameOver.PlaySound();
 	IsElectrified = false;
@@ -197,6 +204,7 @@ bool Snake::getIsDead()
 
 void Snake::Respawn()
 {
+	//RESPAWNS THE SNKAE IN A RANDOM POSITION
 		m_SegmentPos.clear();
 
 		randomSpawnX = (rand()%(25-8+ 1) + 8)* 20;
@@ -237,7 +245,7 @@ void Snake::SetHighScore(int x)
 
 void Snake::BecomeElectrified(Window& window)
 {
-
+	//SETS THE POSITIONS OF THE ELECTRIFIED SEGMENTS AROUND THE SNAKE
 	for (int i = 0; i < m_SegmentPos.size(); i++)
 	{
 		int a, b;
@@ -290,6 +298,7 @@ int Snake::GetCountDown()
 
 sf::Color Snake::GetRandomColor()
 {
+	//CHOSES A RAND COLOR
 	int color = 0;
 	color = rand() % (5 - 1 + 1) + 1;
 
@@ -317,6 +326,7 @@ Direction Snake::GetDirection()
 
 void Snake::SetOutline(bool x)
 {
+	//SHOWS OULINE OF SNAKE
 	if (x == true)
 	{
 		rectangle.setOutlineThickness(2);

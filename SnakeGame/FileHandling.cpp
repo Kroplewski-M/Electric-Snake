@@ -43,6 +43,7 @@ void FileHandling::SetScore()
 
 void FileHandling::OverRideScore(int score)
 {
+	//OVERRIDES THE HIGH SCORE 
 	file.open(fileName, std::ofstream::in | std::ofstream::out | std::ofstream::trunc);
 	if (file.is_open())
 	{

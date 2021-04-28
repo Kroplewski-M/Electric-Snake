@@ -5,6 +5,7 @@
 Game::Game()
 	:m_window("Electric Snake", { 800,600 }), GameBackground(800, 600, "Snake Background.png"), SnakeEatSound("SnakeEats.wav"), SnakeElectrifiedSound("BatterySound.wav")
 {
+	//LOADS ALL THE FILES NEEEDED
 	if (!CountDownTexture.loadFromFile("CountDownClock.jpg"))
 	{
 		printf("CountDownClockTexture not loaded");
@@ -30,6 +31,7 @@ Game::Game()
 		printf("failed to load snake font");
 	}
 
+	//SETS ALL APPLE LOCATIONS
 	AllApples.push_back(apple);
 	AllApples.push_back(apple);
 	AllApples.push_back(apple);
@@ -38,7 +40,7 @@ Game::Game()
 
 	SetAllAppleLocation();
 
-
+	//SETS ALL TEXT 
 
 	ScoreText.setFont(ScoreFont);
 	ScoreText.setCharacterSize(25);
@@ -82,13 +84,15 @@ Game::Game()
 	CountDownCircle.setPosition(10, 465);
 	CountDownCircle.setTexture(&CountDownTexture);
 
-	
+	//INITIALIZE ALL THE AI
+
 	AISnakes.emplace_back(AI1);
 	AISnakes.emplace_back(AI2);
 	AISnakes.emplace_back(AI3);
 	AISnakes.emplace_back(AI4);
 	AISnakes.emplace_back(AI5);
 
+	//SNAKE ID FOR THE SCORE BOARD
 	snake.SetName("Player");
 	AI1->SetName("AI1");
 	AI2->SetName("AI2");
@@ -97,7 +101,7 @@ Game::Game()
 	AI5->SetName("AI5");
 
 	
-
+	//OUTLINES THE SNAKE THAT THE PLAYER CONTROLS
 	snake.SetOutline(true);
 
 }
@@ -110,7 +114,6 @@ Game::~Game()
 void Game::HandleInput()
 {
 	MoveSnake();
-
 }
 
 void Game::Update()
@@ -119,7 +122,8 @@ void Game::Update()
 
 	if (GameIsFinished == false)
 	{
-
+		//UPDATE ALL POSITIONS OF ALL ITEMS/ PLAYERS IN GAME
+		//ALSO CHECK FOR COLLISION 
 		snake.Update();
 
 		for (auto& i : AISnakes)
@@ -156,6 +160,7 @@ void Game::Update()
 			GameIsFinished = true;
 	}
 	else
+		//WHEN GAME ENDS IT FIND THE PLAYER WITH THE GREATEST SCORE
 		FindWinner();
 	
 }
@@ -165,7 +170,8 @@ void Game::Render()
 	m_window.BeginDraw();  //CLEAR
 
 	if (GameIsFinished == false)
-{
+{	
+		//RENDER EVERYTHING IN-GAME - SNAKES, ITEMS, PLAYING FIELD, TEXT ETC.
 
 		GameBackground.Render(m_window);
 		//DRAW GRID
@@ -234,7 +240,7 @@ Window* Game::GetWindow()
 
 bool Game::ConsumableIsColliding(Snake* m_snake, const sf::Vector2f& pos_)
 {
-	
+	//CHECKS FOR SPAWN LOCATION IF THE ITEM IS NOT IN A SQUARE THE A SNAKE IS ALREADY AT
 	for (const SnakeSegment& seg_ : m_snake->GetSegments())
 	{
 		if (sf::Vector2f(seg_.x, seg_.y) == pos_)
@@ -245,6 +251,7 @@ bool Game::ConsumableIsColliding(Snake* m_snake, const sf::Vector2f& pos_)
 
 sf::Vector2f Game::SetAppleLocation()
 {
+	//FIND A SUITABLE APPLE LOCATION
 	float randX, randY;
 		do {
 			randX = 120 + (((rand() % 601) % 20) * 20);
@@ -266,6 +273,7 @@ sf::Vector2f Game::SetAppleLocation()
 }
 sf::Vector2f Game::SetBatteryLocation()
 {
+	//FIND A SUITABLE BATTERY LOCATION
 	float randX, randY;
 	do {
 		randX = 120 + (((rand() % 601) % 20) * 20);
@@ -277,7 +285,7 @@ sf::Vector2f Game::SetBatteryLocation()
 }
 void Game::SnakeEats()
 {
-
+	//SETS BATTERY LOCATION AFTER 10 SECONDS INTO THE GAME
 	if (BatteryClock.getElapsedTime().asSeconds() >= 10 && once == 0)
 	{
 		battery.SetSpawnLocation(SetBatteryLocation());
@@ -286,6 +294,7 @@ void Game::SnakeEats()
 
 	if (snake.getIsDead() == false)
 	{
+		//CHECKS FOR COLLISION BETWEEN CONSUMABLE AND SNAKE HEAD- IF TRUE, GROW THE SNAKE
 		for (auto& i: AllApples)
 		{
 			if (snake.GetSegments().front().x == i.GetLocation().x && snake.GetSegments().front().y == i.GetLocation().y )
@@ -303,6 +312,7 @@ void Game::SnakeEats()
 			snake.SetIsElectrified(true);
 		}
 	}
+	//CHECKS THE COLLISION FOR THE AI
 	for (auto& x : AISnakes)
 	{
 		if (x->getIsDead() == false)
@@ -322,6 +332,7 @@ void Game::SnakeEats()
 
 void Game::DrawGrid()
 {
+	//DRAW THE PLAYING GRID
 	Grid snakeGrid(sf::Vector2f(120, 0), sf::Vector2f(600, 600), sf::Vector2f(20, 20));
 	for (auto& i : snakeGrid.GetGrid())
 	{
@@ -332,6 +343,7 @@ void Game::DrawGrid()
 
 void Game::MoveSnake()
 {
+	//KEYBOARD INPUT TO MOVE THE PLAYER SNAKE
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 	{
 		snake.SetOutline(false);
@@ -371,6 +383,7 @@ void Game::MoveSnake()
 
 void Game::CheckHighScore(int x)
 {
+	//SETS A NEW HIGHSCORE IF PLAYER BEATS IT
 	if (snake.GetScore() > snake.GetHighScore())
 	{
 		snake.SetHighScore(snake.GetScore());
@@ -379,7 +392,7 @@ void Game::CheckHighScore(int x)
 
 void Game::BatteryLocationTimer()
 {
-
+	//RESETS BATTERY SPAWN TIMER
 	if (SpawnBattery == true)
 	{
 		battery.SetSpawnLocation(SetBatteryLocation());
@@ -389,6 +402,7 @@ void Game::BatteryLocationTimer()
 
 void Game::SetAllAppleLocation()
 {
+	//LOOPS THROUGH APPLE VECTOR AND SETS ALL LOCATIONS OF APPLES
 	for (auto& i : AllApples)
 	{
 		i.SetSpawnLocation(SetAppleLocation());
@@ -397,30 +411,34 @@ void Game::SetAllAppleLocation()
 
 void Game::MoveAI(AISnake* AI)
 {
+	//MOVE AI SNAKE DEPENDING ON THE DIRECTION AND APPLE LOCATION
+
+	//GO LEFT
 	if (AI->GetSegments()[0].x > ClosestAppleLocation->x)
 	{
 		if (AI->GetDirection() != Direction::Right)
 			AI->ChangeDirection(Direction::Left);
 	}
-
+	//GO RIGHT
 	else if (AI->GetSegments()[0].x < ClosestAppleLocation->x)
 	{
 		if (AI->GetDirection() != Direction::Left)
 			AI->ChangeDirection(Direction::Right);
 	}
-
+	//GO DOWN
 	else if (AI->GetSegments()[0].y < ClosestAppleLocation->y)
 	{
 		if (AI->GetDirection() != Direction::Up)
 			AI->ChangeDirection(Direction::Down);
 	}
-
+	//GO UP
 	else if (AI->GetSegments()[0].y > ClosestAppleLocation->y)
 	{
 		if (AI->GetDirection() != Direction::Down)
 			AI->ChangeDirection(Direction::Up);
 	}
-
+	//CHECKS IF SNAKE IS NEAR A WALL- IF IT IS CHANGE THE DIRECTION
+	//GO LEFT
 	if (AI->GetSegments()[0].y + 20 == 600)
 	{
 		if (AI->GetDirection() == Direction::Down)
@@ -428,6 +446,7 @@ void Game::MoveAI(AISnake* AI)
 			AI->ChangeDirection(Direction::Right);
 		}
 	}
+	//GO RIGHT
 	else if (AI->GetSegments()[0].y - 20 == 0)
 	{
 		if (AI->GetDirection() == Direction::Up)
@@ -435,6 +454,7 @@ void Game::MoveAI(AISnake* AI)
 			AI->ChangeDirection(Direction::Right);
 		}
 	}
+	//GO DOWN
 	else if (AI->GetSegments()[0].x + 20 == 600)
 	{
 		if (AI->GetDirection() == Direction::Right)
@@ -442,6 +462,7 @@ void Game::MoveAI(AISnake* AI)
 			AI->ChangeDirection(Direction::Down);
 		}
 	}
+	//GO UP
 	else if (AI->GetSegments()[0].x + 20 == 600)
 	{
 		if (AI->GetDirection() == Direction::Right)
@@ -449,14 +470,15 @@ void Game::MoveAI(AISnake* AI)
 			AI->ChangeDirection(Direction::Up);
 		}
 	}
+	//GO DOWN
 	else if (AI->GetSegments()[0].x - 20 == 120)
 	{
 		if (AI->GetDirection() == Direction::Left)
 		{
-			AI->ChangeDirection(Direction::Up);
+			AI->ChangeDirection(Direction::Down);
 		}
 	}
-
+	//LOOPS THROUGH ALL AI SNAKES AND CHECKS LOCATION- IF THEY ARE NEAR CHANGE DIRECTION 
 	for (auto& i : AISnakes)
 	{
 		for (auto& j : AISnakes)
@@ -520,11 +542,12 @@ sf::Vector2f Game::GetClosestApple(sf::Vector2f AISnakeLoc, std::vector<Apple>& 
 
 void Game::CheckAllSnakeCollision()
 {
+	//CHECKS COLLISION BETWEEN SNAKES
 	for (auto& i : AISnakes)
 	{
 		if (i->getIsDead() == false)
 		{
-			
+			//PLAYER SNAKE HEAD VS AI HEAD
 			if (snake.GetSegments().front().x == i->GetSegments()[0].x && snake.GetSegments().front().y == i->GetSegments()[0].y)
 			{
 				if (snake.GetIsElectified() == true)
@@ -539,6 +562,7 @@ void Game::CheckAllSnakeCollision()
 			}
 			for (auto& j : AISnakes)
 			{
+				//AI HEAD VS AI HEAD
 				if (j->getIsDead() == false)
 				{
 					if (j != i)
@@ -553,6 +577,7 @@ void Game::CheckAllSnakeCollision()
 			}
 			for (auto& h : i->GetSegments())
 			{
+				//SNAKE HEAD VS AI BODY
 				if (snake.GetSegments().front().x == h.x && snake.GetSegments().front().y == h.y)
 				{
 					if (snake.GetIsElectified() == true)
@@ -564,6 +589,7 @@ void Game::CheckAllSnakeCollision()
 				}
 				for (auto& j : AISnakes)
 				{
+					//AI HEAD VS AI BODY
 					if (j->getIsDead() == false)
 					{
 						if (j != i)
@@ -580,6 +606,7 @@ void Game::CheckAllSnakeCollision()
 			{
 				for (auto& k : snake.GetSegments())
 				{
+					//AI HEAD VS PLAYER SNAKE BODY
 					if (i->GetSegments()[0].x == k.x && i->GetSegments()[0].y == k.y)
 					{
 						i->Dead();
@@ -595,6 +622,7 @@ void Game::CheckAllSnakeCollision()
 
 void Game::RespawnAll()
 {
+	//RESPAWNS EVERY SNAKE IN GAME
 	snake.Respawn();
 	for (auto& i : AISnakes)
 	{
@@ -604,6 +632,7 @@ void Game::RespawnAll()
 
 bool Game::CheckAllDead()
 {
+	//CHECKS IF EVERYONE IS DEAD
 	for (auto& i : AISnakes)
 	{
 		if (snake.getIsDead() == true && i->getIsDead() == true)
@@ -617,7 +646,7 @@ bool Game::CheckAllDead()
 
 void Game::GameOverScreen()
 {
-	
+	//GAME OVER MENU 
 		sf::RectangleShape EndMenuBox;
 		EndMenuBox.setSize({ 200,400 });
 		EndMenuBox.setOutlineThickness(2);
@@ -673,6 +702,7 @@ void Game::GameOverScreen()
 		QuitText.setOutlineColor(sf::Color::White);
 		QuitText.setString("Quit");
 
+		//BUTTON GETS HIGHLIGHED IF MOUSE IF OVER IT
 		if (GetWindow()->getMouseLocation().x > RestartButton.getPosition().x && GetWindow()->getMouseLocation().x < RestartButton.getPosition().x + RestartButton.getSize().x &&
 			GetWindow()->getMouseLocation().y > RestartButton.getPosition().y && GetWindow()->getMouseLocation().y < RestartButton.getPosition().y + RestartButton.getSize().y)
 		{
@@ -702,7 +732,7 @@ void Game::GameOverScreen()
 		}
 		else
 			QuitButton.setOutlineThickness(0);
-
+		//DRAWS THE GAME OVER SCREEN
 		m_window.Draw(EndMenuBox);
 		m_window.Draw(GameOverText);
 		m_window.Draw(WinnerText);
@@ -716,6 +746,7 @@ void Game::GameOverScreen()
 
 void Game::FindWinner()
 {
+	//FINDS THE SNAKE WITH THE HIGHEST SCORE
 	if (snake.GetScore() > TopScore)
 	{
 		TopScore = snake.GetScore();
@@ -735,6 +766,7 @@ void Game::FindWinner()
 
 void Game::SetAllDirection()
 {
+	//SETS DEFAULT DIRECTION TO ALL AI SNAKE
 	for (auto& i : AISnakes)
 	{
 		i->SetAutoDirection();

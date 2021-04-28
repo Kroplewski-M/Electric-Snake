@@ -14,6 +14,7 @@ Scenemanager::~Scenemanager()
 
 void Scenemanager::Update()
 {
+	//SETS THE CORRECT SCENE 
 	while (!game.GetWindow()->isDone())
 	{
 		switch (myStates)
@@ -43,8 +44,7 @@ void Scenemanager::Update()
 
 void Scenemanager::ChangeScene()
 {
-
-
+	//CHANGES THE SCENE DEPENDING ON PLAYER ACTIONS
 	if (myStates == GameStates::MainMenu)
 	{
 		if (game.GetWindow()->getMouseLocation().x > menu.GetStartButton().getPosition().x 
@@ -73,8 +73,6 @@ void Scenemanager::ChangeScene()
 
 		}
 	}
-
-
 
 	if (myStates == GameStates::Game)
 	{

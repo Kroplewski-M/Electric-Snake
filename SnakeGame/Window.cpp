@@ -30,6 +30,7 @@ void Window::EndDraw()
 
 void Window::Update()
 {
+	//EVENT MANAGER
 	sf::Event event;
 	while (m_window.pollEvent(event))
 	{
